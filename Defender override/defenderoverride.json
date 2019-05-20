@@ -1,10 +1,12 @@
- // First add the indicators to your settings, then add the override and change weight and other things accordingly.
- // Thanks to CryptoGnome for the initial settings and Zwarbo for the initial converstion to feeder settings! 
+// Thanks to CryptoGnome for the initial settings and Zwarbo for the initial conversion to feeder settings.
+//My additions to this was to make an override so you can use the autodefend feature.
 
- // Override created by IamLegion. 
- //BTC Donations if you like what i have put together can be sent to 1KhLBfkjQLaGSqgmSgorCyfb44RUG7SDCG
+// Override created by IamLegion. 
+//BTC Donations if you like what i have put together can be sent to 1KhLBfkjQLaGSqgmSgorCyfb44RUG7SDCG
  
- 
+
+// First add the indicators to your settings, then add the override and change weight and other things accordingly.
+
  // Indicators - CryptoGnome PT-Defender 5m candle settings
  "IndicatorsBbdcaStd": "2",
  "IndicatorsBbdcaCandlePeriod": "300",
