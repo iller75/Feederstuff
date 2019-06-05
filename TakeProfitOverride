@@ -1,0 +1,73 @@
+          // Profit trailer take profit override depending on pair profit.
+          // Change settings to your liking and strategy
+          
+          "ChangeTakeprofitGrouping": {
+          "Condition": "[pair.Profit] >= [config.TriggerName] ",
+          "Configs": [
+              
+            {
+              "TriggerName": "0.3",
+             
+                "Override": {
+       
+                  "TakeProfitWaitTime" : "5",
+                  "TakeProfitPercentage": "0.3",
+                  "TakeProfitResetPercentageMove": "0.1",
+       
+                  "DcaTakeProfitWaitTime": "5",
+                  "DcaTakeProfitPercentage": "0.3",
+                  "DcaTakeProfitResetPercentageMove":"0.1",
+ 
+                  "Weight": "810"
+                },
+
+            
+              "TriggerName": "0.6",
+                
+                "Override": {
+          
+                  "TakeProfitWaitTime" : "8",
+                  "TakeProfitPercentage": "0.6",
+                  "TakeProfitResetPercentageMove": "0.2",
+           
+                  "DcaTakeProfitWaitTime": "8",
+                  "DcaTakeProfitPercentage": "0.6",
+                  "DcaTakeProfitResetPercentageMove":"0.2",
+    
+                  "Weight": "809"
+                },
+
+            
+              "TriggerName": "1.2",
+                  
+                "Override": {
+            
+                  "TakeProfitWaitTime" : "15",
+                  "TakeProfitPercentage": "1.2",
+                  "TakeProfitResetPercentageMove": "0.5",
+             
+                  "DcaTakeProfitWaitTime": "15",
+                  "DcaTakeProfitPercentage": "1.2",
+                  "DcaTakeProfitResetPercentageMove":"0.5",
+      
+                  "Weight": "808"
+                },
+
+            
+              "TriggerName": "3",
+                    
+                "Override": {
+              
+                  "TakeProfitWaitTime" : "25",
+                  "TakeProfitPercentage": "3",
+                  "TakeProfitResetPercentageMove": "0.8",
+               
+                  "DcaTakeProfitWaitTime": "25",
+                  "DcaTakeProfitPercentage": "3",
+                  "DcaTakeProfitResetPercentageMove":"0.8",
+        
+                  "Weight": "807"
+                }
+              },
+             ]
+           },
