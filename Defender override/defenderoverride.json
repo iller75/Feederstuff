@@ -1,4 +1,20 @@
 THIS IS CURRENTLY NOT WORKING!
+Possible workaround is to set you dca enabled in your main settings a bit earlier than defender kicks in
+and also change the following 
+
+  "Condition": "[pair.PendingCount] >= [config.TriggerName] ",
+  "Configs": [
+    {
+     "TriggerName": "1",
+     
+To this
+     
+       "Condition": "[pair.DcaCount] >= [config.TriggerName] ",
+  "Configs": [
+    {
+     "TriggerName": "0",
+     
+     This should set the pair to dcaenabled true once the override kicks in.
 
 
 
