@@ -1,7 +1,11 @@
 // This strat is under heavy development and testing! 
-// The strategy looks for an uptrend and buys into it, you can catch a falling knife but that's where defender comes in.
-//This version is supposed to be used together with defender!
+// The Strat uses Double cross in bear and sideways market and my own strat in a bull market, it uses dca with gnomes settings
+// as well as positive dca when a pair is in profit. The strat also works with autodefending coins with a specific override.
+
+// In a bull market the strategy looks for an uptrend and buys into it, you can catch a falling knife but that's where defender comes in.
+// This version is supposed to be used together with defender!
 // USE AT OWN RISK! 
+
 
 {
     "PtFeeder": {
@@ -75,120 +79,302 @@
     },
     "Common": {
         "OrderbookProfitCalculation": "true",
+        "DcaOrderbookProfitCalculation": "true",
         "DcaSomDcaBuyTrigger": "-200",
         "PairMinListedDays": "15",
         // -------------------------------------------------------------------------------------------------------------------------------------------------
         // B A L A N C E S
         // -------------------------------------------------------------------------------------------------------------------------------------------------
-        "MaxTradingPairs": "35", // changed from 50 pairs was 60
-        "DcaMaxTradingPairs": "3",
+        "MaxTradingPairs": "20", // changed from 50 pairs was 60
+        "DcaMaxTradingPairs": "6",
         "StartBalance": "942",
-        "DcaIgnoreSellOnlyMode": "true",
+        "KeepBalancePercentage": "70", //27 nov changed from 20% (was 80)
+        "DcaKeepBalancePercentage": "0", //27 nov changed from 0%
         "SellOnlyModeEnabled": "false",
-        "KeepBalancePercentage": "75", //27 nov changed from 20% (was 80)
-        "DcaKeepBalancePercentage": "0" //27 nov changed from 0%
+        "DcaIgnoreSellOnlyMode": "true",
     },
-    "Defaults": {
-       
-
-        "InitialCostPercentage": "5",
+    "Defaults": {     
+        "InitialCostPercentage": "4",
         "MinBuyPrice": "0.00000060", //was 0.00000500
         //"BuyMinChangePercentage": "0.5",
         // -------------------------------------------------------------------------------------------------------------------------------------------------
         // B U Y   S A F E T I E S
         // -------------------------------------------------------------------------------------------------------------------------------------------------            
-        "MinBuyVolume": "1500000",
-        "DcaMinBuyVolume": "1000000",
-        "MaxBuySpread": "3",
+        "MinBuyVolume": "500000",
+        "MaxBuySpread": "2",
         "MinOrderbookVolumePercentage": "101",
         "RebuyTimeout": "5",
-        
         "TakeProfitWaitTime": "10",
         "TakeProfitPercentage": "0.45",
         "TakeProfitResetPercentageMove": "0.3",
-        "DcaTakeProfitWaitTime": "5",
+        // ----------------------------------------------------------------------------------------------------------------------------------------------
+        // DCA
+        // ----------------------------------------------------------------------------------------------------------------------------------------------
+        "DcaMaxProfit": "18",
+        "DcaTakeProfitWaitTime": "15",
+        "DcaMaxBuySpread": "2",
         "DcaTakeProfitPercentage": "0.45",
         "DcaTakeProfitResetPercentageMove": "0.3",
-        //  -------------------------------------------------------------------------------------------------------------------------------------------------
-        // Super Bear indicators
-        //  -------------------------------------------------------------------------------------------------------------------------------------------------
+        "DcaMaxBuyTimes": "100",
+        "DcaMinBuyVolume": "0",
+        "DcaMinOrderbookVolumePercentage": "101",
+        "DcaIgnoreSellOnlyMode": "true",
+        "DcaRebuyTimeout": "3",
+        "DcaBuyMinChangePercentage": "-5",
+        "DcaBuyMaxChangePercentage": "20",
+        // ----------------------------------------------------------------------------------------------------------------------------------------------
+        // DCA Buy Percentages
+        // ----------------------------------------------------------------------------------------------------------------------------------------------        
+        "DcaBuyPercentage1": "50", //75 for less conservative
+        "DcaBuyPercentage2": "33", //50 for less conservative
+        "DcaBuyPercentage3": "25",
+        "DcaBuyPercentage4": "20",
+        "DcaBuyPercentage5": "16",
+        "DcaBuyPercentage6": "14",
+        "DcaBuyPercentage7": "12",
+        "DcaBuyPercentage8": "11",
+        "DcaBuyPercentage9": "10",
+        "DcaBuyPercentage10": "9.09",
+        "DcaBuyPercentage11": "8.33",
+        "DcaBuyPercentage12": "7.69",
+        "DcaBuyPercentage13": "7.14",
+        "DcaBuyPercentage14": "6.66",
+        "DcaBuyPercentage15": "6.25",
+        "DcaBuyPercentage16": "5.88",
+        "DcaBuyPercentage17": "5.55",
+        "DcaBuyPercentage18": "5.26",
+        "DcaBuyPercentage19": "5.12",
+        "DcaBuyPercentage20": "5.00",
+        "DcaBuyPercentage21": "4.76",
+        "DcaBuyPercentage22": "4.54",
+        "DcaBuyPercentage23": "4.34",
+        "DcaBuyPercentage24": "4.16",
+        "DcaBuyPercentage25": "4.00",
+        "DcaBuyPercentage26": "3.84",
+        "DcaBuyPercentage27": "3.70",
+        "DcaBuyPercentage28": "3.57",
+        "DcaBuyPercentage29": "3.44",
+        "DcaBuyPercentage30": "3.33",
+        "DcaBuyPercentage31": "3.22",
+        "DcaBuyPercentage32": "3.12",
+        "DcaBuyPercentage33": "3.03",
+        "DcaBuyPercentage34": "2.94",
+        "DcaBuyPercentage35": "2.85",
+        "DcaBuyPercentage36": "2.77",
+        "DcaBuyPercentage37": "2.70",
+        "DcaBuyPercentage38": "2.63",
+        "DcaBuyPercentage39": "2.56",
+        "DcaBuyPercentage40": "2.50",
+        "DcaBuyPercentage41": "2.43",
+        "DcaBuyPercentage42": "2.38",
+        "DcaBuyPercentage43": "2.32",
+        "DcaBuyPercentage44": "2.27",
+        "DcaBuyPercentage45": "2.22",
+        "DcaBuyPercentage46": "2.17",
+        "DcaBuyPercentage47": "2.12",
+        "DcaBuyPercentage48": "2.08",
+        "DcaBuyPercentage49": "2.04",
+        "DcaBuyPercentage50": "2.00",
+        "DcaBuyPercentage51": "1.96",
+        "DcaBuyPercentage52": "1.92",
+        "DcaBuyPercentage53": "1.88",
+        "DcaBuyPercentage54": "1.85",
+        "DcaBuyPercentage55": "1.81",
+        "DcaBuyPercentage56": "1.78",
+        "DcaBuyPercentage57": "1.75",
+        "DcaBuyPercentage58": "1.72",
+        "DcaBuyPercentage59": "1.69",
+        "DcaBuyPercentage60": "1.66",
+        "DcaBuyPercentage61": "1.63",
+        "DcaBuyPercentage62": "1.61",
+        "DcaBuyPercentage63": "1.58",
+        "DcaBuyPercentage64": "1.56",
+        "DcaBuyPercentage65": "1.53",
+        "DcaBuyPercentage66": "1.51",
+        "DcaBuyPercentage67": "1.49",
+        "DcaBuyPercentage68": "1.47",
+        "DcaBuyPercentage69": "1.44",
+        "DcaBuyPercentage70": "1.42",
+        "DcaBuyPercentage71": "1.40",
+        "DcaBuyPercentage72": "1.38",
+        "DcaBuyPercentage73": "1.36",
+        "DcaBuyPercentage74": "1.35",
+        "DcaBuyPercentage75": "1.33",
+        "DcaBuyPercentage76": "1.31",
+        "DcaBuyPercentage77": "1.29",
+        "DcaBuyPercentage78": "1.28",
+        "DcaBuyPercentage79": "1.26",
+        "DcaBuyPercentage80": "1.25",
+        "DcaBuyPercentage81": "1.23",
+        "DcaBuyPercentage82": "1.21",
+        "DcaBuyPercentage83": "1.20",
+        "DcaBuyPercentage84": "1.19",
+        "DcaBuyPercentage85": "1.17",
+        "DcaBuyPercentage86": "1.16",
+        "DcaBuyPercentage87": "1.14",
+        "DcaBuyPercentage88": "1.13",
+        "DcaBuyPercentage89": "1.12",
+        "DcaBuyPercentage90": "1.11",
+        "DcaBuyPercentage91": "1.09",
+        "DcaBuyPercentage92": "1.08",
+        "DcaBuyPercentage93": "1.07",
+        "DcaBuyPercentage94": "1.06",
+        "DcaBuyPercentage95": "1.05",
+        "DcaBuyPercentage96": "1.04",
+        "DcaBuyPercentage97": "1.03",
+        "DcaBuyPercentage98": "1.02",
+        "DcaBuyPercentage99": "1.01",
+        "DcaBuyPercentage100": "1",    
+        // -------------------------------------------------------------------------------------------------------------------------------------------------
+        // DCA Sell Values
+        // -------------------------------------------------------------------------------------------------------------------------------------------------
+        "DcaASellValue1": "0.75",
+        "DcaASellValue2": "0.5",
+        "DcaASellValue3": "0.75",
+        "DcaASellValue4": "0.375",
+        "DcaASellValue5": "0.1875",
+        "DcaASellValue6": "0.09375",
+        "DcaASellValue7": "0.046875",
+        "DcaASellValue8": "0.0234375",
+        "DcaASellValue9": "0.01171875",
+        "DcaASellValue10": "0.005859375",
+        "DcaASellValue11": "0.0029296875",
+        "DcaASellValue12": "0.00146484375",
+        "DcaASellValue13": "0.000732421875",
+        "DcaASellValue14": "0.0003662109375000000000000000000000",
+        "DcaASellValue15": "0.0001831054687500000000000000000000",
+        "DcaASellValue16": "0.0000915527343750000000000000000000",
+        "DcaASellValue17": "0.0000457763671875000000000000000000",
+        "DcaASellValue18": "0.0000228881835937500000000000000000",
+        "DcaASellValue19": "0.0000114440917968750000000000000000",
+        "DcaASellValue20": "0.0000057220458984375000000000000000",
+        "DcaASellValue21": "0.0000028610229492187500000000000000",
+        "DcaASellValue22": "0.0000014305114746093800000000000000",
+        "DcaASellValue23": "0.0000007152557373046880000000000000",
+        "DcaASellValue24": "0.0000003576278686523440000000000000",
+        "DcaASellValue25": "0.0000001788139343261720000000000000",
+        "DcaASellValue26": "0.0000000894069671630859000000000000",
+        "DcaASellValue27": "0.0000000447034835815430000000000000",
+        "DcaASellValue28": "0.0000000223517417907715000000000000",
+        "DcaASellValue29": "0.0000000111758708953857000000000000",
+        "DcaASellValue30": "0.0000000055879354476928700000000000",
+        "DcaASellValue31": "0.0000000027939677238464400000000000",
+        "DcaASellValue32": "0.0000000013969838619232200000000000",
+        "DcaASellValue33": "0.0000000006984919309616090000000000",
+        "DcaASellValue34": "0.0000000003492459654808040000000000",
+        "DcaASellValue35": "0.0000000001746229827404020000000000",
+        "DcaASellValue36": "0.0000000000873114913702011000000000",
+        "DcaASellValue37": "0.0000000000436557456851006000000000",
+        "DcaASellValue38": "0.0000000000218278728425503000000000",
+        "DcaASellValue39": "0.0000000000109139364212751000000000",
+        "DcaASellValue40": "0.0000000000054569682106375700000000",
+        "DcaASellValue41": "0.0000000000027284841053187800000000",
+        "DcaASellValue42": "0.0000000000013642420526593900000000",
+        "DcaASellValue43": "0.0000000000006821210263296960000000",
+        "DcaASellValue44": "0.0000000000003410605131648480000000",
+        "DcaASellValue45": "0.0000000000001705302565824240000000",
+        "DcaASellValue46": "0.0000000000000852651282912120000000",
+        "DcaASellValue47": "0.0000000000000426325641456060000000",
+        "DcaASellValue48": "0.0000000000000213162820728030000000",
+        "DcaASellValue49": "0.0000000000000106581410364015000000",
+        "DcaASellValue50": "0.0000000000000053290705182007500000",
+        "DcaASellValue51": "0.0000000000000026645352591003800000",
+        "DcaASellValue52": "0.0000000000000013322676295501900000",
+        "DcaASellValue53": "0.0000000000000006661338147750940000",
+        "DcaASellValue54": "0.0000000000000003330669073875470000",
+        "DcaASellValue55": "0.0000000000000001665334536937730000",
+        "DcaASellValue56": "0.0000000000000000832667268468867000",
+        "DcaASellValue57": "0.0000000000000000416333634234434000",
+        "DcaASellValue58": "0.0000000000000000208166817117217000",
+        "DcaASellValue59": "0.0000000000000000104083408558608000",
+        "DcaASellValue60": "0.0000000000000000052041704279304200",
+        "DcaASellValue61": "0.0000000000000000026020852139652100",
+        "DcaASellValue62": "0.0000000000000000013010426069826100",
+        "DcaASellValue63": "0.0000000000000000006505213034913030",
+        "DcaASellValue64": "0.0000000000000000003252606517456510",
+        "DcaASellValue65": "0.0000000000000000001626303258728260",
+        "DcaASellValue66": "0.0000000000000000000813151629364128",
+        "DcaASellValue67": "0.0000000000000000000406575814682064",
+        "DcaASellValue68": "0.0000000000000000000203287907341032",
+        "DcaASellValue69": "0.0000000000000000000101643953670516",
+        "DcaASellValue70": "0.0000000000000000000050821976835258",
+        "DcaASellValue71": "0.0000000000000000000025410988417629",
+        "DcaASellValue72": "0.0000000000000000000012705494208815",
+        "DcaASellValue73": "0.0000000000000000000006352747104407",
+        "DcaASellValue74": "0.0000000000000000000003176373552204",
+        "DcaASellValue75": "0.0000000000000000000001588186776102",
+        "DcaASellValue76": "0.0000000000000000000000794093388051",
+        "DcaASellValue77": "0.0000000000000000000000397046694025",
+        "DcaASellValue78": "0.0000000000000000000000198523347013",
+        "DcaASellValue79": "0.0000000000000000000000099261673506",
+        "DcaASellValue80": "0.0000000000000000000000049630836753",
+        "DcaASellValue81": "0.0000000000000000000000024815418377",
+        "DcaASellValue82": "0.0000000000000000000000012407709188",
+        "DcaASellValue83": "0.0000000000000000000000006203854594",
+        "DcaASellValue84": "0.0000000000000000000000003101927297",
+        "DcaASellValue85": "0.0000000000000000000000001550963649",
+        "DcaASellValue86": "0.0000000000000000000000000775481824",
+        "DcaASellValue87": "0.0000000000000000000000000387740912",
+        "DcaASellValue88": "0.0000000000000000000000000193870456",
+        "DcaASellValue89": "0.0000000000000000000000000096935228",
+        "DcaASellValue90": "0.0000000000000000000000000048467614",
+        "DcaASellValue91": "0.0000000000000000000000000024233807",
+        "DcaASellValue92": "0.0000000000000000000000000012116904",
+        "DcaASellValue93": "0.0000000000000000000000000006058452",
+        "DcaASellValue94": "0.0000000000000000000000000003029226",
+        "DcaASellValue95": "0.0000000000000000000000000001514613",
+        "DcaASellValue96": "0.0000000000000000000000000000757306",
+        "DcaASellValue97": "0.0000000000000000000000000000378653",
+        "DcaASellValue98": "0.0000000000000000000000000000189327",
+        "DcaASellValue99": "0.0000000000000000000000000000094663",
+        "DcaASellValue100": "0.0000000000000000000000000000047332",
+       // -------------------------------------------------------------------------------------------------------------------------------------------------
+        // SUPER BEAR INDICATORS
+        // -------------------------------------------------------------------------------------------------------------------------------------------------
+        
         // BB // 
         "IndicatorsBbsbStd": "2",
-        "IndicatorsBbsbCandlePeriod": "3600",
-        "IndicatorsBbsbLength": "50",
-        // OBV //
-        "IndicatorsObvsbCandlePeriod": "3600",
-        "IndicatorsObvsbLength": "50",
-        "IndicatorsObvsbSignal": "1",
-        // RSI //
-        "IndicatorsRsisbCandlePeriod": "3600",
-        "IndicatorsRsisbLength": "14", //14
-        // DEMACROSS Super Bear //
-        "IndicatorsDemasbCrossCandles": "10", //was 40
-        "IndicatorsDemasbCandlePeriod": "3600", //was 300
-        "IndicatorsDemasbFastLength": "2",
-        "IndicatorsDemasbSlowLength": "22",
-        "IndicatorsDemasbLength": "10",
-        // EMA //
-        "IndicatorsEmasbCandlePeriod": "3600",
-        "IndicatorsEmasbCrossCandles": "2", //was 40
-        "IndicatorsEmasbFastLength": "8", //7
-        "IndicatorsEmasbSlowLength": "13", //14
-        // STOCH //
-        "IndicatorsStochsbCandlePeriod": "3600", // was 300
-        "IndicatorsStochsbLength": "14", // was 5 
-        "IndicatorsStochsbD": "3", // was 3
-        "IndicatorsStochsbK": "7", // was 3
-        // STOCH RSI CROSS //
-        "IndicatorsStochrsisbcrossCandlePeriod": "3600",
-        "IndicatorsStochrsisbcrossRsiLength": "14",
-        "IndicatorsStochrsisbcrossStochLength": "14",
-        "IndicatorsStochrsisbcrossK": "3",
-        "IndicatorsStochrsisbcrossD": "3",
-        "IndicatorsStochrsisbcrossCrossCandles": "40",
-        //  -------------------------------------------------------------------------------------------------------------------------------------------------
-        // Bear indicators
-        //  -------------------------------------------------------------------------------------------------------------------------------------------------
-        // BB // 
-        "IndicatorsBbbStd": "2",
-        "IndicatorsBbbCandlePeriod": "1800",
-        "IndicatorsBbbLength": "50",
-        // OBV //
-        "IndicatorsObvbCandlePeriod": "1800",
-        "IndicatorsObvbLength": "50",
-        "IndicatorsObvbSignal": "1",
-        // RSI //
-        "IndicatorsRsibCandlePeriod": "1800",
-        "IndicatorsRsibLength": "14", //14
-        // DEMACROSS Bear //
-        "IndicatorsDemabCrossCandles": "10", //was 40
-        "IndicatorsDemabCandlePeriod": "1800", //was 300
-        "IndicatorsDemabFastLength": "2",
-        "IndicatorsDemabSlowLength": "22",
-        "IndicatorsDemabLength": "10",
-        // EMA //
-        "IndicatorsEmabCandlePeriod": "1800",
-        "IndicatorsEmabCrossCandles": "2", //was 40
-        "IndicatorsEmabFastLength": "8", //7
-        "IndicatorsEmabSlowLength": "13", //14
-        // STOCH //
-        "IndicatorsStochbCandlePeriod": "1800", // was 300
-        "IndicatorsStochbLength": "14", // was 5 
-        "IndicatorsStochbD": "3", // was 3
-        "IndicatorsStochbK": "7", // was 3
-        // STOCH RSI CROSS //
-        "IndicatorsStochrsibcrossCandlePeriod": "1800",
-        "IndicatorsStochrsibcrossRsiLength": "14",
-        "IndicatorsStochrsibcrossStochLength": "14",
-        "IndicatorsStochrsibcrossK": "3",
-        "IndicatorsStochrsibcrossD": "3",
-        "IndicatorsStochrsibcrossCrossCandles": "40",
-        //  -------------------------------------------------------------------------------------------------------------------------------------------------
-        // Sideways indicators
-        //  -------------------------------------------------------------------------------------------------------------------------------------------------
+        "IndicatorsBbsbCandlePeriod": "300",
+        "IndicatorsBbsbLength": "20",
+        
+        // BEAR SMA //
+        "IndicatorsSmaCrossCandles": "80",
+        "IndicatorsSmaCandlePeriod": "300",
+        "IndicatorsSmaFastLength": "21",
+        "IndicatorsSmaSlowLength": "55",
+
+        // BEAR EMA //
+        "IndicatorsEmabearCrossCandles": "40",
+        "IndicatorsEmabearcandlePeriod": "300",
+        "IndicatorsEmabearFastLength": "8",
+        "IndicatorsEmabearSlowLength": "13",
+
+        // BEAR RSI //
+        "IndicatorsRsibearCandlePeriod": "300",
+        "indicatorsRsibearLength": "14",
+
+        // BEAR MACD //
+        "IndicatorsMacdCandlePeriod": "300",
+        "IndicatorsMacdFastLength": "12",
+        "IndicatorsMacdSlowLength": "26",
+        "IndicatorsMacdSignal": "9",
+
+        // BEAR OBV //
+        "IndicatorsObvbearCandlePeriod": "300",
+        "IndicatorsObvbearLength": "50",
+        "IndicatorsObvbearSignal": "1",
+
+        "indicatorsSomTriggerLength":"288",
+        // -------------------------------------------------------------------------------------------------------------------------------------------------
+        // BEAR INDICATORS (CURRENTLY USING SUPER BEAR)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------
+        
+        // -------------------------------------------------------------------------------------------------------------------------------------------------
+        // SIDEWAYS INDICATORS (Not currently used)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------
         // BB // 
         "IndicatorsBbsidebStd": "2",
-        "IndicatorsBbbsideCandlePeriod": "900",
+        "IndicatorsBbbsideCandlePeriod": "300",
         "IndicatorsBbbsideLength": "50",
         // OBV //
         "IndicatorsObvsideCandlePeriod": "900",
@@ -198,30 +384,29 @@
         "IndicatorsRsisideCandlePeriod": "900",
         "IndicatorsRsisideLength": "14", //14
         // DEMACROSS Side //
-        "IndicatorsDemasideCrossCandles": "10", //was 40
+        "IndicatorsDemasideCrossCandles": "40", //was 40
         "IndicatorsDemasideCandlePeriod": "900", //was 300
         "IndicatorsDemasideFastLength": "2",
         "IndicatorsDemasideSlowLength": "22",
         "IndicatorsDemasideLength": "10",
+        // DEMACROSS Side long//
+        "IndicatorsDemasidelCrossCandles": "50", //was 40
+        "IndicatorsDemasidelCandlePeriod": "3600", //was 300
+        "IndicatorsDemasidelFastLength": "2",
+        "IndicatorsDemasidelSlowLength": "22",
+        "IndicatorsDemasidelLength": "10",
         // EMA //
         "IndicatorsEmasideCandlePeriod": "900",
-        "IndicatorsEmasideCrossCandles": "5", //was 40
+        "IndicatorsEmasideCrossCandles": "2", //was 40
         "IndicatorsEmasideFastLength": "8", //7
         "IndicatorsEmasideSlowLength": "13", //14
         // STOCH //
         "IndicatorsStochsideCandlePeriod": "900", // was 300
         "IndicatorsStochsideLength": "14", // was 5 
         "IndicatorsStochsideD": "3", // was 3
-        "IndicatorsStochsideK": "7", // was 3
-        // STOCH RSI CROSS //
-        "IndicatorsStochrsisidecrossCandlePeriod": "900",
-        "IndicatorsStochrsisidecrossRsiLength": "14",
-        "IndicatorsStochrsisidecrossStochLength": "14",
-        "IndicatorsStochrsisidecrossK": "3",
-        "IndicatorsStochrsisidecrossD": "3",
-        "IndicatorsStochrsisidecrossCrossCandles": "40",
+        "IndicatorsStochsideK": "10", // was 3
         // -------------------------------------------------------------------------------------------------------------------------------------------------
-        // Bullish & Super bullish
+        // BULLISH & SUPER BULLISH INDICATORS
         // -------------------------------------------------------------------------------------------------------------------------------------------------
         // BB // 
         "IndicatorsBbStd": "2",
@@ -235,14 +420,20 @@
         "IndicatorsRsiCandlePeriod": "300",
         "IndicatorsRsiLength": "14", //14
         // DEMACROSS Bull and Normal //
-        "IndicatorsDemaCrossCandles": "10", //was 40
+        "IndicatorsDemaCrossCandles": "40", //was 40
         "IndicatorsDemaCandlePeriod": "300", //was 300
         "IndicatorsDemaFastLength": "2",
         "IndicatorsDemaSlowLength": "22",
         "IndicatorsDemaLength": "10",
+        // DEMACROSS Bull and Normal Long//
+        "IndicatorsDemalCrossCandles": "40", //was 40
+        "IndicatorsDemalCandlePeriod": "900", //was 300
+        "IndicatorsDemalFastLength": "2",
+        "IndicatorsDemalSlowLength": "22",
+        "IndicatorsDemalLength": "10",
         // EMA //
         "IndicatorsEmaCandlePeriod": "300",
-        "IndicatorsEmaCrossCandles": "10", //was 40
+        "IndicatorsEmaCrossCandles": "2", //was 40
         "IndicatorsEmaFastLength": "8", //7
         "IndicatorsEmaSlowLength": "13", //14
         // STOCH //
@@ -250,13 +441,6 @@
         "IndicatorsStochLength": "14", // was 5 
         "IndicatorsStochD": "3", // was 3
         "IndicatorsStochK": "7", // was 3
-        // STOCH RSI CROSS //
-        "IndicatorsStochrsicrossCandlePeriod": "300",
-        "IndicatorsStochrsicrossRsiLength": "14",
-        "IndicatorsStochrsicrossStochLength": "14",
-        "IndicatorsStochrsicrossK": "3",
-        "IndicatorsStochrsicrossD": "3",
-        "IndicatorsStochrsicrossCrossCandles": "40",
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         // Sell INDICATORS
         // ----------------------------------------------------------------------------------------------------------------------------------------------
@@ -296,64 +480,53 @@
     "MarketConditionsGrouping": {
         "Configs": [
             {
-                "Name": "SUPERBEAR",
-                "MaxTopCoinAverageChange": "-2.5",
-                "MaxTopCoinLongTermAverageChange": "-2.5",
-                "MinBaseCoinPriceChange": "3.5",
-                "MaxBaseCoinPriceChange": "-3",
+            "Name": "SUPERBEAR",
+            "MaxTopCoinAverageChange": "-2.5",
+            "MaxTopCoinLongTermAverageChange": "-2.5",
+            "MinBaseCoinPriceChange": "3.5",
+            "MaxBaseCoinPriceChange": "-3",
                 "Override": {
-                    
-                    "ABuyStrategyLabel": "DEMASB",
-                    "ABuyStrategy": "DEMACROSS",
-                    "ABuyValue": "0.01",
-                    "ABuyValueLimit": "20",
-                    "BBuyStrategyLabel": "OBVSB",
-                    "BBuyStrategy": "OBV",
-                    "BBuyValue": "0.001",
-                    "BBuyValueLimit": "4",
-                    "CBuyStrategyLabel": "DEMASB",
-                    "CBuyStrategy": "DEMAGAIN",
-                    "CBuyValue": "0.005",
-                    "CBuyValueLimit": "20",
-                    //"DBuyStrategyLabel":"BBSB"
-                    //"DBuyStrategy":"LOWBB",
-                    //"DBuyValue":"-10",
-                    // "DBuyValueLimit": "-1",
-                    "EBuyStrategyLabel": "STOCHSB",
-                    "EBuyStrategy": "STOCH",
-                    "EBuyValue": "100.1",
-                    "EBuyValueLimit": "45", //was 49.9 
-                    //"FBuyStrategyLabel": "STOCHRSISB",
-                    //"FBuyStrategy": "STOCHRSICROSS",
-                    //"FBuyValue": "0.5",
-                    //"FBuyValueLimit": "20",
-                    //"GBuyStrategyLabel" :"DEMASB",
-                    //"GBuyStrategy" : "DEMACROSS",
-                    //"GBuyValue":"0.01",
-                    //"GBuyValueLimit":"20",
-                    "TrailingBuy": "0",
+                    "InitialCostPercentage":"4",
+                    "TrailingBuy":"0.5",
+                    "ABuyStrategyLabel":"EMABEAR",
+                    "ABuyStrategy":"EMACROSS",
+                    "ABuyValue":"-0.,01",
+                    "ABuyValueLimit":"-10",
+                    "BBuyStrategy":"SMACROSS",
+                    "BBuyValue":"-0.01",
+                    "BBuyValueLimit":"-10",
+                    "CBuyStrategyLabel":"BBSB",
+                    "CBuyStrategy":"LOWBB",
+                    "CBuyValue":"35",
+                    "CBuyValueLimit":"-30",
+                    "DBuyStrategyLabel":"EMABEAR",
+                    "DBuyStrategy":"EMAGAIN",
+                    "DBuyValue":"-0.1",
+                    "DBuyValueLimit":"-3",
+                    "EBuyStrategyLabel":"RSIBEAR",
+                    "EBuyStrategy":"RSI",
+                    "EBuyValue":"50",
+                    "EBuyValueLimit":"0",
                     "ASellStrategy": "GAIN",
-                    "ASellValue": "0.8",
-                    "BSellStrategyLabel": "DEMASELL",
-                    "BSellStrategy": "DEMACROSS",
-                    "BSellValue": "0.01",
-                    "BSellValueLimit": "50",
+                    "ASellValue": "0.5",
+                    "BSellStrategyLabel": "BBSB",
+                    "BSellStrategy": "HIGHBB",
+                    "BSellValue": "30",
+                    //"BSellValueLimit": "50",
+                    // DCA //
+                    "DcaEnabled":"false",
                     "TrailingStopLossTriggerArm": "2.5",
                     "TrailingStopLossTrigger": "-0.5",
                     "TrailingProfitType": "SHRINK",
-                    // DCA //
                     "DcaASellStrategy": "GAIN",
-                    "DcaASellValue": "0.8",
-                    //"DcaEnabled":"-1.5", 
-                    "DcaMinBuyVolume": "750000",
-                    "MinBuyVolume": "1000000",
-                    "DcaRebuyTimeout": "10",
-                    "DcaMaxBuyTimes": "5",
+                    "DcaASellValue": "1.25", 
+                    "MinBuyVolume": "500000",
+                    "DcaMinBuyVolume": "500000",
                     "DcaTrailingStopLossTriggerArm": "2",
                     "DcaTrailingStopLossTrigger": "-0.2",
                     "DcaTrailingProfitType": "SHRINK",
                     "Weight": "96"
-                }
+            }
             },
             {
                 "Name": "BEARISH",
@@ -361,55 +534,69 @@
                 "MaxTopCoinLongTermAverageChange": "-1.75",
                 "MinBaseCoinPriceChange": "2.5",
                 "MaxBaseCoinPriceChange": "-2",
-                "Override": {
-                    
-                    "ABuyStrategyLabel": "DEMAB",
-                    "ABuyStrategy": "DEMACROSS",
-                    "ABuyValue": "0.01",
-                    "ABuyValueLimit": "20",
-                    "BBuyStrategyLabel": "OBVB",
-                    "BBuyStrategy": "OBV",
-                    "BBuyValue": "0.001",
-                    "BBuyValueLimit": "4",
-                    "CBuyStrategyLabel": "DEMAB",
-                    "CBuyStrategy": "DEMAGAIN",
-                    "CBuyValue": "0.005",
-                    "CBuyValueLimit": "20",
-                    //"DBuyStrategyLabel":"BBB"
-                    //"DBuyStrategy":"LOWBB",
-                    //"DBuyValue":"-10",
-                    // "DBuyValueLimit": "-1",
-                    "EBuyStrategyLabel": "STOCHB",
-                    "EBuyStrategy": "STOCH",
-                    "EBuyValue": "100.1",
-                    "EBuyValueLimit": "45", //was 49.9 
-                    //"FBuyStrategyLabel": "STOCHRSIB",
-                    //"FBuyStrategy": "STOCHRSICROSS",
-                    //"FBuyValue": "0.5",
-                    //"FBuyValueLimit": "20",
-                    //"GBuyStrategyLabel" :"DEMAB",
-                    //"GBuyStrategy" : "DEMACROSS",
-                    //"GBuyValue":"0.01",
-                    //"GBuyValueLimit":"20",
-                    "TrailingBuy": "0",
+                    "Override": {
+                    "InitialCostPercentage":"4",
+                    "TrailingBuy":"0.5",
+                    "ABuyStrategyLabel":"EMABEAR",
+                    "ABuyStrategy":"EMACROSS",
+                    "ABuyValue":"-0.,01",
+                    "ABuyValueLimit":"-10",
+                    "BBuyStrategy":"SMACROSS",
+                    "BBuyValue":"-0.01",
+                    "BBuyValueLimit":"-10",
+                    "CBuyStrategyLabel":"BBSB",
+                    "CBuyStrategy":"LOWBB",
+                    "CBuyValue":"35",
+                    "CBuyValueLimit":"-30",
+                    "DBuyStrategyLabel":"EMABEAR",
+                    "DBuyStrategy":"EMAGAIN",
+                    "DBuyValue":"-0.1",
+                    "DBuyValueLimit":"-3",
+                    "EBuyStrategyLabel":"RSIBEAR",
+                    "EBuyStrategy":"RSI",
+                    "EBuyValue":"50",
+                    "EBuyValueLimit":"0",
                     "ASellStrategy": "GAIN",
-                    "ASellValue": "0.8",
-                    "BSellStrategyLabel": "DEMASELL",
-                    "BSellStrategy": "DEMACROSS",
-                    "BSellValue": "0.01",
-                    "BSellValueLimit": "50",
-                    //"TrailingProfit":"0.1",
+                    "ASellValue": "1.25",
+                    "BSellStrategyLabel": "BBSB",
+                    "BSellStrategy": "HIGHBB",
+                    "BSellValue": "30",
+                    //"BSellValueLimit": "50",
+                    // DCA //
+                    "DcaEnabled":"-1.25",
+                    "DcaABuyStrategyLabel":"BBSB",
+                    "DcaABuyStrategy":"LOWBB",
+                    "DcaABuyValue":"35",
+                    "DcaABuyValueLimit":"-30",
+                    "DcaBBuyStrategyLabel":"EMABEAR",
+                    "DcaBBuyStrategy":"EMAGAIN",
+                    "DcaBBuyValue":"-0.1",
+                    "DcaBBuyValueLimit":"-3",
+                    "DcaCBuyStrategy":"MACD",
+                    "DcaCBuyValue":"-0.00000001",
+                    "DcaCBuyValueLimit":"-0.01",
+                    "DcaCBuyStrategyLabel":"EMABEAR",
+                    "DcaDBuyStrategy":"EMASPREAD",
+                    "DcaDBuyValue":"-0.01",
+                    "DcaDBuyValueLimit":"-0.25",
+                    "DcaEBuyStrategyLabel":"RSIBEAR",
+                    "DcaEBuyStrategy":"RSI",
+                    "DcaEBuyValue":"50",
+                    "DcaEBuyValueLimit":"0",
+                    "DcaTrailingBuy":"0.5",
+                    "DcaBuyTrigger":"-1",
+                    "DcaASellStrategy": "GAIN",
+                    "DcaASellValue": "1.25",
+                    "DcaBSellStrategyLabel":"BBSB",
+                    "DcaBSellStrategy":"HIGHBB",
+                    "DcaBSellValue":"35",
+                    "DcaCSellStrategy":"RSI",
+                    "DcaCSellValue":"50",
                     "TrailingStopLossTriggerArm": "2",
                     "TrailingStopLossTrigger": "-0.3",
                     "TrailingProfitType": "SHRINK",
-                    // DCA //
-                    "DcaASellStrategy": "GAIN",
-                    "DcaASellValue": "0.8",
-                    //"DcaEnabled":"-1.5",
-                    "DcaMinBuyVolume": "750000",
-                    "MinBuyVolume": "1000000",
-                    "DcaRebuyTimeout": "10",
-                    "DcaMaxBuyTimes": "5",
+                    "DcaMinBuyVolume": "500000",
+                    "MinBuyVolume": "500000",
                     "DcaTrailingStopLossTriggerArm": "2",
                     "DcaTrailingStopLossTrigger": "-0.3",
                     "DcaTrailingProfitType": "SHRINK",
@@ -420,72 +607,79 @@
                 "Name": "Sideways",
                 "MaxTopCoinLongTermAverageChange": "2",
                 "Override": {
-                    //"InitialCostPercentage":"2",
-                    "ABuyStrategyLabel": "DEMASIDE",
-                    "ABuyStrategy": "DEMACROSS",
-                    "ABuyValue": "0.01",
-                    "ABuyValueLimit": "20",
-                    "BBuyStrategyLabel": "OBVSIDE",
-                    "BBuyStrategy": "OBV",
-                    "BBuyValue": "0.001",
-                    "BBuyValueLimit": "4",
-                    "CBuyStrategyLabel": "DEMASIDE",
-                    "CBuyStrategy": "DEMAGAIN",
-                    "CBuyValue": "0.005",
-                    "CBuyValueLimit": "20",
-                    //"DBuyStrategyLabel":"BBSIDE"
-                    //"DBuyStrategy":"LOWBB",
-                    //"DBuyValue":"-10",
-                    // "DBuyValueLimit": "-1",
-                    "EBuyStrategyLabel": "STOCHSIDE",
-                    "EBuyStrategy": "STOCH",
-                    "EBuyValue": "100.1",
-                    "EBuyValueLimit": "45", //was 49.9 
-                    //"FBuyStrategyLabel": "STOCHRSISIDE",
-                    //"FBuyStrategy": "STOCHRSICROSS",
-                    //"FBuyValue": "0.5",
-                    //"FBuyValueLimit": "20",
-                    //"GBuyStrategyLabel" :"DEMASIDE",
-                    //"GBuyStrategy" : "DEMACROSS",
-                    //"GBuyValue":"0.01",
-                    //"GBuyValueLimit":"20",
-                    "TrailingBuy": "0",
+                    "InitialCostPercentage":"4",
+                    "TrailingBuy":"0.5",
+                    "ABuyStrategyLabel":"EMABEAR",
+                    "ABuyStrategy":"EMACROSS",
+                    "ABuyValue":"-0.,01",
+                    "ABuyValueLimit":"-10",
+                    "BBuyStrategy":"SMACROSS",
+                    "BBuyValue":"-0.01",
+                    "BBuyValueLimit":"-10",
+                    "CBuyStrategyLabel":"BBSB",
+                    "CBuyStrategy":"LOWBB",
+                    "CBuyValue":"35",
+                    "CBuyValueLimit":"-30",
+                    "DBuyStrategyLabel":"EMABEAR",
+                    "DBuyStrategy":"EMAGAIN",
+                    "DBuyValue":"-0.1",
+                    "DBuyValueLimit":"-3",
+                    "EBuyStrategyLabel":"RSIBEAR",
+                    "EBuyStrategy":"RSI",
+                    "EBuyValue":"50",
+                    "EBuyValueLimit":"0",
                     "ASellStrategy": "GAIN",
                     "ASellValue": "1.25",
-                    "BSellStrategyLabel": "DEMASELL",
-                    "BSellStrategy": "DEMACROSS",
-                    "BSellValue": "0.005",
-                    "BSellValueLimit": "30",
-                    //"TrailingProfit":"0.2",
-                    "TrailingStopLossTriggerArm": "2.5",
-                    "TrailingStopLossTrigger": "-0.5",
-                    "TrailingProfitType": "DEFAULT",
+                    "BSellStrategyLabel": "BBSB",
+                    "BSellStrategy": "HIGHBB",
+                    "BSellValue": "30",
+                    //"BSellValueLimit": "50",
                     // DCA //
-                    //"DcaEnabled":"-1.5", 
+                    "DcaEnabled":"-1.25",
+                    "DcaABuyStrategyLabel":"BBSB",
+                    "DcaABuyStrategy":"LOWBB",
+                    "DcaABuyValue":"35",
+                    "DcaABuyValueLimit":"-30",
+                    "DcaBBuyStrategyLabel":"EMABEAR",
+                    "DcaBBuyStrategy":"EMAGAIN",
+                    "DcaBBuyValue":"-0.1",
+                    "DcaBBuyValueLimit":"-3",
+                    "DcaCBuyStrategy":"MACD",
+                    "DcaCBuyValue":"-0.00000001",
+                    "DcaCBuyValueLimit":"-0.01",
+                    "DcaCBuyStrategyLabel":"EMABEAR",
+                    "DcaDBuyStrategy":"EMASPREAD",
+                    "DcaDBuyValue":"-0.01",
+                    "DcaDBuyValueLimit":"-0.25",
+                    "DcaEBuyStrategyLabel":"RSIBEAR",
+                    "DcaEBuyStrategy":"RSI",
+                    "DcaEBuyValue":"50",
+                    "DcaEBuyValueLimit":"0",
+                    "DcaTrailingBuy":"0.5",
+                    "DcaBuyTrigger":"-1",
                     "DcaASellStrategy": "GAIN",
                     "DcaASellValue": "1.25",
-                    "DcaBSellStrategyLabel": "DEMASELL",
-                    "DcaBSellStrategy": "DEMACROSS",
-                    "DcaBSellValue": "0.01",
-                    "DcaBSellValueLimit": "20",
-                    "DcaMinBuyVolume": "1000000",
-                    "MinBuyVolume": "1500000",
-                    "DcaRebuyTimeout": "5",
-                    "DcaMaxBuyTimes": "5",
-                    "DcaTrailingProfitType": "DEFAULT",
-                    "DcaTrailingStopLossTriggerArm": "2.5",
-                    "DcaTrailingStopLossTrigger": "-0.5",
-                    "SellWallOrderbookDepth": "50",
-                    "SellWallDiffPercentage": "5000",
+                    "DcaBSellStrategyLabel":"BBSB",
+                    "DcaBSellStrategy":"HIGHBB",
+                    "DcaBSellValue":"35",
+                    "DcaCSellStrategy":"RSI",
+                    "DcaCSellValue":"50",
+                    "TrailingStopLossTriggerArm": "2",
+                    "TrailingStopLossTrigger": "-0.3",
+                    "TrailingProfitType": "SHRINK",
+                    "DcaMinBuyVolume": "500000",
+                    "MinBuyVolume": "500000",
+                    "DcaTrailingStopLossTriggerArm": "2",
+                    "DcaTrailingStopLossTrigger": "-0.3",
+                    "DcaTrailingProfitType": "SHRINK",
                     "Weight": "98"
                 }
             },
             {
-                "Name": "BULLISH", // Spanish && pair.specific override based on Volume
+                "Name": "BULLISH", 
                 "MaxTopCoinLongTermAverageChange": "3.5",
                 "Override": {
-                    //"InitialCostPercentage":"4",
-                    
+                    "InitialCostPercentage":"6",
                     "ABuyStrategy": "DEMACROSS",
                     "ABuyValue": "0.01",
                     "ABuyValueLimit": "20",
@@ -501,7 +695,7 @@
                     //"DBuyValueLimit": "-1",
                     "EBuyStrategy": "STOCH",
                     "EBuyValue": "100.1",
-                    "EBuyValueLimit": "45", //was 49.9
+                    "EBuyValueLimit": "49.9", //was 49.9
                     //"FBuyStrategy": "STOCHRSICROSS",
                     //"FBuyValue": "0.5",
                     //"FBuyValueLimit": "20",
@@ -517,18 +711,38 @@
                     "TrailingStopLossTrigger": "-0.5",
                     "TrailingProfitType": "GROW",
                     // DCA //
-
-                    //"DcaEnabled":"-1.5", 
+                    "DcaEnabled":"-1.5", 
+                    "DcaABuyStrategy": "DEMACROSS",
+                    "DcaABuyValue": "0.01",
+                    "DcaABuyValueLimit": "20",
+                    "DcaBBuyStrategy": "OBV",
+                    "DcaBBuyStrategyLabel": "OBV",
+                    "DcaBBuyValue": "0.001",
+                    "DcaBBuyValueLimit": "4",
+                    "DcaCBuyStrategy": "DEMAGAIN",
+                    "DcaCBuyValue": "0.005",
+                    "DcaCBuyValueLimit": "20",
+                    //"DcaDBuyStrategy":"LOWBB",
+                    //"DcaDBuyValue":"-10",
+                    //"DcaDBuyValueLimit": "-1",
+                    "DcaEBuyStrategy": "STOCH",
+                    "DcaEBuyValue": "100.1",
+                    "DcaEBuyValueLimit": "49.9", //was 49.9
+                    //"DcaFBuyStrategy": "STOCHRSICROSS",
+                    //"DcaFBuyValue": "0.5",
+                    //"DcaFBuyValueLimit": "20",
+                    "DcaTrailingBuy": "0",
                     "DcaASellStrategy": "GAIN",
                     "DcaASellValue": "1.25",
-                    "DcaBSellStrategyLabel": "DEMASELL",
-                    "DcaBSellStrategy": "DEMACROSS",
-                    "DcaBSellValue": "0.01",
-                    "DcaBSellValueLimit": "20",
-                    "DcaMinBuyVolume": "1000000",
-                    "MinBuyVolume": "1500000",
+                    "DcaBSellStrategyLabel":"BBSB",
+                    "DcaBSellStrategy":"HIGHBB",
+                    "DcaBSellValue":"35",
+                    "DcaCSellStrategy":"RSI",
+                    "DcaCSellValue":"50",
+                    "DcaMinBuyVolume": "500000",
+                    "MinBuyVolume": "500000",
                     "DcaRebuyTimeout": "3",
-                    "DcaMaxBuyTimes": "5",
+                    "DcaMaxBuyTimes": "10",
                     "DcaTrailingProfitType": "GROW",
                     "DcaTrailingStopLossTriggerArm": "2.5",
                     "DcaTrailingStopLossTrigger": "-0.5",
@@ -541,8 +755,7 @@
                 "Name": "SUPERBULL",
                 "MaxTopCoinLongTermAverageChange": "10000",
                 "Override": {
-                    //"InitialCostPercentage":"7",
-                    
+                    "InitialCostPercentage":"7",
                     "ABuyStrategy": "DEMACROSS",
                     "ABuyValue": "0.01",
                     "ABuyValueLimit": "20",
@@ -574,18 +787,38 @@
                     "TrailingStopLossTrigger": "-0.5",
                     "TrailingProfitType": "GROW",
                     // DCA //
-
-                    //"DcaEnabled":"-1.5", 
+                    "DcaEnabled":"-1.5", 
+                    "DcaABuyStrategy": "DEMACROSS",
+                    "DcaABuyValue": "0.01",
+                    "DcaABuyValueLimit": "20",
+                    "DcaBBuyStrategy": "OBV",
+                    "DcaBBuyStrategyLabel": "OBV",
+                    "DcaBBuyValue": "0.001",
+                    "DcaBBuyValueLimit": "4",
+                    "DcaCBuyStrategy": "DEMAGAIN",
+                    "DcaCBuyValue": "0.005",
+                    "DcaCBuyValueLimit": "20",
+                    //"DcaDBuyStrategy":"LOWBB",
+                    //"DcaDBuyValue":"-10",
+                    //"DcaDBuyValueLimit": "-1",
+                    "DcaEBuyStrategy": "STOCH",
+                    "DcaEBuyValue": "100.1",
+                    "DcaEBuyValueLimit": "49.9", //was 49.9
+                    //"DcaFBuyStrategy": "STOCHRSICROSS",
+                    //"DcaFBuyValue": "0.5",
+                    //"DcaFBuyValueLimit": "20",
+                    "DcaTrailingBuy": "0",
                     "DcaASellStrategy": "GAIN",
-                    "DcaASellValue": "1.5",
-                    "DcaBSellStrategyLabel": "DEMASELL",
-                    "DcaBSellStrategy": "DEMACROSS",
-                    "DcaBSellValue": "0.01",
-                    "DcaBSellValueLimit": "20",
-                    "DcaMinBuyVolume": "1250000",
-                    "MinBuyVolume": "1750000",
+                    "DcaASellValue": "1.25",
+                    "DcaBSellStrategyLabel":"BBSB",
+                    "DcaBSellStrategy":"HIGHBB",
+                    "DcaBSellValue":"35",
+                    "DcaCSellStrategy":"RSI",
+                    "DcaCSellValue":"50",
+                    "DcaMinBuyVolume": "500000",
+                    "MinBuyVolume": "500000",
                     "DcaRebuyTimeout": "1",
-                    "DcaMaxBuyTimes": "5",
+                    "DcaMaxBuyTimes": "10",
                     "DcaTrailingProfitType": "GROW",
                     "DcaTrailingStopLossTriggerArm": "2.5",
                     "DcaTrailingStopLossTrigger": "-0.5",
@@ -668,6 +901,7 @@
             }
         ]
     },
+
     "ChangeDCAGrouping": {
         "Condition": "[pair.Profit] >= [config.TriggerName] ",
         "Configs": [
@@ -684,7 +918,7 @@
                     "DcaABuyValue": "0.01",
                     "DcaABuyValueLimit": "20",
                     "DcaBBuyStrategy": "OBV",
-                    "DcaBBuyStrategyLabel": "OBVHENDRIXXS",
+                    "DcaBBuyStrategyLabel": "OBV",
                     "DcaBBuyValue": "0.1",
                     "DcaBBuyValueLimit": "4",
                     "DcaCBuyStrategy": "DEMAGAIN",
@@ -695,43 +929,37 @@
                     //"DcaDBuyValueLimit": "-1",
                     "DcaEBuyStrategy": "STOCH",
                     "DcaEBuyValue": "100.1",
-                    "DcaEBuyValueLimit": "45", //was 49.9
-                    //"DcaFBuyStrategy" :"STOCHRSICROSS",
-                    //"DcaFBuyValue": "0.01",
-                    //"DcaFBuyValueLimit": "20",
-                    //"GBuyStrategyLabel" :"DEMALONG",
-                    //"GBuyStrategy" : "DEMACROSS",
-                    //"GBuyValue":"0.01",
-                    //"GBuyValueLimit":"20",
+                    "DcaEBuyValueLimit": "49.9", //was 49.9
                     "DcaBuyTrigger": "2",
                     "DcaBuyTrigger1": "2",
                     "DcaBuyTrigger2": "3",
                     "DcaBuyTrigger3": "3",
                     "DcaBuyTrigger4": "3",
                     "DcaBuyTrigger5": "3",
-                    "DcaBuyPercentage": "50",
-                    "DcaBuyPercentage1": "70",
-                    "DcaBuyPercentage2": "70",
-                    "DcaBuyPercentage3": "70",
-                    "DcaBuyPercentage4": "70",
-                    "DcaBuyPercentage5": "70",
+                    "DcaBuyPercentage": "95", //Change to lower value later (50%)
+                    "DcaBuyPercentage1": "90",
+                    "DcaBuyPercentage2": "75",
+                    "DcaBuyPercentage3": "50",
+                    "DcaBuyPercentage4": "50",
+                    "DcaBuyPercentage5": "50",
                     "DcaEnabled": "2",
                     "DcaTrailingBuy": "0",
-                    "Weight": "680"
+                    "Weight": "920"
                 }
             },
         ]
     },
     "ChangeDefenderGrouping": {
-        "Condition": "[pair.PendingCount] >= [config.TriggerName] ",
+        "Condition": "[pair.PendingCount] >= 1 && [pair.Profit] <= [config.TriggerName] ",
         "Configs": [
             {
-                "TriggerName": "1",
+                "TriggerName": "-2",
                 "Override": {
+                    "SellOnlyModeEnabled":"false",
                     //---PAIRS Properties ---//
                     // CryptoGnome PT-Defender starting/medium risk buy strategy properties
                     
-                    "TrailingBuy": "0", //set to 0 for more agressive
+                    "TrailingBuy": "0.5", //set to 0 for more agressive
                     "RebuyTimeout": "0", // Set to 0 for more agressive
                     "MinOrderbookVolumePercentage": "100",
                     // coin filters
@@ -784,7 +1012,7 @@
                     //---DCA Properties ---//
                     "DcaEnabled": "true",
                     "DcaMaxCost": "600",
-                    "DcaMaxBuyTimes": "100",
+                    "DcaMaxBuyTimes": "10", // Increase according to dca calculator
                     "DcaMinBuyVolume": "0",
                     "DcaMinOrderbookVolumePercentage": "101",
                     "DcaIgnoreSellOnlyMode": "true",
@@ -823,106 +1051,6 @@
                     "DcaEBuyValue": "36", //less agressive set to 36, agressive 35
                     "DcaEBuyValueLimit": "0",
                     "DcaBuyTrigger": "-1",
-                    "DcaBuyPercentage1": "100", //75 for less conservative
-                    "DcaBuyPercentage2": "33", //50 for less conservative
-                    "DcaBuyPercentage3": "25",
-                    "DcaBuyPercentage4": "20",
-                    "DcaBuyPercentage5": "16",
-                    "DcaBuyPercentage6": "14",
-                    "DcaBuyPercentage7": "12",
-                    "DcaBuyPercentage8": "11",
-                    "DcaBuyPercentage9": "10",
-                    "DcaBuyPercentage10": "9.09",
-                    "DcaBuyPercentage11": "8.33",
-                    "DcaBuyPercentage12": "7.69",
-                    "DcaBuyPercentage13": "7.14",
-                    "DcaBuyPercentage14": "6.66",
-                    "DcaBuyPercentage15": "6.25",
-                    "DcaBuyPercentage16": "5.88",
-                    "DcaBuyPercentage17": "5.55",
-                    "DcaBuyPercentage18": "5.26",
-                    "DcaBuyPercentage19": "5.12",
-                    "DcaBuyPercentage20": "5.00",
-                    "DcaBuyPercentage21": "4.76",
-                    "DcaBuyPercentage22": "4.54",
-                    "DcaBuyPercentage23": "4.34",
-                    "DcaBuyPercentage24": "4.16",
-                    "DcaBuyPercentage25": "4.00",
-                    "DcaBuyPercentage26": "3.84",
-                    "DcaBuyPercentage27": "3.70",
-                    "DcaBuyPercentage28": "3.57",
-                    "DcaBuyPercentage29": "3.44",
-                    "DcaBuyPercentage30": "3.33",
-                    "DcaBuyPercentage31": "3.22",
-                    "DcaBuyPercentage32": "3.12",
-                    "DcaBuyPercentage33": "3.03",
-                    "DcaBuyPercentage34": "2.94",
-                    "DcaBuyPercentage35": "2.85",
-                    "DcaBuyPercentage36": "2.77",
-                    "DcaBuyPercentage37": "2.70",
-                    "DcaBuyPercentage38": "2.63",
-                    "DcaBuyPercentage39": "2.56",
-                    "DcaBuyPercentage40": "2.50",
-                    "DcaBuyPercentage41": "2.43",
-                    "DcaBuyPercentage42": "2.38",
-                    "DcaBuyPercentage43": "2.32",
-                    "DcaBuyPercentage44": "2.27",
-                    "DcaBuyPercentage45": "2.22",
-                    "DcaBuyPercentage46": "2.17",
-                    "DcaBuyPercentage47": "2.12",
-                    "DcaBuyPercentage48": "2.08",
-                    "DcaBuyPercentage49": "2.04",
-                    "DcaBuyPercentage50": "2.00",
-                    "DcaBuyPercentage51": "1.96",
-                    "DcaBuyPercentage52": "1.92",
-                    "DcaBuyPercentage53": "1.88",
-                    "DcaBuyPercentage54": "1.85",
-                    "DcaBuyPercentage55": "1.81",
-                    "DcaBuyPercentage56": "1.78",
-                    "DcaBuyPercentage57": "1.75",
-                    "DcaBuyPercentage58": "1.72",
-                    "DcaBuyPercentage59": "1.69",
-                    "DcaBuyPercentage60": "1.66",
-                    "DcaBuyPercentage61": "1.63",
-                    "DcaBuyPercentage62": "1.61",
-                    "DcaBuyPercentage63": "1.58",
-                    "DcaBuyPercentage64": "1.56",
-                    "DcaBuyPercentage65": "1.53",
-                    "DcaBuyPercentage66": "1.51",
-                    "DcaBuyPercentage67": "1.49",
-                    "DcaBuyPercentage68": "1.47",
-                    "DcaBuyPercentage69": "1.44",
-                    "DcaBuyPercentage70": "1.42",
-                    "DcaBuyPercentage71": "1.40",
-                    "DcaBuyPercentage72": "1.38",
-                    "DcaBuyPercentage73": "1.36",
-                    "DcaBuyPercentage74": "1.35",
-                    "DcaBuyPercentage75": "1.33",
-                    "DcaBuyPercentage76": "1.31",
-                    "DcaBuyPercentage77": "1.29",
-                    "DcaBuyPercentage78": "1.28",
-                    "DcaBuyPercentage79": "1.26",
-                    "DcaBuyPercentage80": "1.25",
-                    "DcaBuyPercentage81": "1.23",
-                    "DcaBuyPercentage82": "1.21",
-                    "DcaBuyPercentage83": "1.20",
-                    "DcaBuyPercentage84": "1.19",
-                    "DcaBuyPercentage85": "1.17",
-                    "DcaBuyPercentage86": "1.16",
-                    "DcaBuyPercentage87": "1.14",
-                    "DcaBuyPercentage88": "1.13",
-                    "DcaBuyPercentage89": "1.12",
-                    "DcaBuyPercentage90": "1.11",
-                    "DcaBuyPercentage91": "1.09",
-                    "DcaBuyPercentage92": "1.08",
-                    "DcaBuyPercentage93": "1.07",
-                    "DcaBuyPercentage94": "1.06",
-                    "DcaBuyPercentage95": "1.05",
-                    "DcaBuyPercentage96": "1.04",
-                    "DcaBuyPercentage97": "1.03",
-                    "DcaBuyPercentage98": "1.02",
-                    "DcaBuyPercentage99": "1.01",
-                    "DcaBuyPercentage100": "1",
                     // DCA Sell Settings
                     "DcaOrderbookProfitCalculation": "true",
                     "DcaMaxProfit": "18",
@@ -944,108 +1072,8 @@
                     "DcaBSellStrategy": "RSI",
                     "DcaBSellValue": "40",
                     "DcaBSellValueLimit": "100",
-                    "DcaTrailingProfit": "0.163", //set to 0.29 for bullmarket, 0.163 for bear
-                    "DcaASellValue1": "0.75",
-                    "DcaASellValue2": "0.5",
-                    "DcaASellValue3": "0.75",
-                    "DcaASellValue4": "0.375",
-                    "DcaASellValue5": "0.1875",
-                    "DcaASellValue6": "0.09375",
-                    "DcaASellValue7": "0.046875",
-                    "DcaASellValue8": "0.0234375",
-                    "DcaASellValue9": "0.01171875",
-                    "DcaASellValue10": "0.005859375",
-                    "DcaASellValue11": "0.0029296875",
-                    "DcaASellValue12": "0.00146484375",
-                    "DcaASellValue13": "0.000732421875",
-                    "DcaASellValue14": "0.0003662109375000000000000000000000",
-                    "DcaASellValue15": "0.0001831054687500000000000000000000",
-                    "DcaASellValue16": "0.0000915527343750000000000000000000",
-                    "DcaASellValue17": "0.0000457763671875000000000000000000",
-                    "DcaASellValue18": "0.0000228881835937500000000000000000",
-                    "DcaASellValue19": "0.0000114440917968750000000000000000",
-                    "DcaASellValue20": "0.0000057220458984375000000000000000",
-                    "DcaASellValue21": "0.0000028610229492187500000000000000",
-                    "DcaASellValue22": "0.0000014305114746093800000000000000",
-                    "DcaASellValue23": "0.0000007152557373046880000000000000",
-                    "DcaASellValue24": "0.0000003576278686523440000000000000",
-                    "DcaASellValue25": "0.0000001788139343261720000000000000",
-                    "DcaASellValue26": "0.0000000894069671630859000000000000",
-                    "DcaASellValue27": "0.0000000447034835815430000000000000",
-                    "DcaASellValue28": "0.0000000223517417907715000000000000",
-                    "DcaASellValue29": "0.0000000111758708953857000000000000",
-                    "DcaASellValue30": "0.0000000055879354476928700000000000",
-                    "DcaASellValue31": "0.0000000027939677238464400000000000",
-                    "DcaASellValue32": "0.0000000013969838619232200000000000",
-                    "DcaASellValue33": "0.0000000006984919309616090000000000",
-                    "DcaASellValue34": "0.0000000003492459654808040000000000",
-                    "DcaASellValue35": "0.0000000001746229827404020000000000",
-                    "DcaASellValue36": "0.0000000000873114913702011000000000",
-                    "DcaASellValue37": "0.0000000000436557456851006000000000",
-                    "DcaASellValue38": "0.0000000000218278728425503000000000",
-                    "DcaASellValue39": "0.0000000000109139364212751000000000",
-                    "DcaASellValue40": "0.0000000000054569682106375700000000",
-                    "DcaASellValue41": "0.0000000000027284841053187800000000",
-                    "DcaASellValue42": "0.0000000000013642420526593900000000",
-                    "DcaASellValue43": "0.0000000000006821210263296960000000",
-                    "DcaASellValue44": "0.0000000000003410605131648480000000",
-                    "DcaASellValue45": "0.0000000000001705302565824240000000",
-                    "DcaASellValue46": "0.0000000000000852651282912120000000",
-                    "DcaASellValue47": "0.0000000000000426325641456060000000",
-                    "DcaASellValue48": "0.0000000000000213162820728030000000",
-                    "DcaASellValue49": "0.0000000000000106581410364015000000",
-                    "DcaASellValue50": "0.0000000000000053290705182007500000",
-                    "DcaASellValue51": "0.0000000000000026645352591003800000",
-                    "DcaASellValue52": "0.0000000000000013322676295501900000",
-                    "DcaASellValue53": "0.0000000000000006661338147750940000",
-                    "DcaASellValue54": "0.0000000000000003330669073875470000",
-                    "DcaASellValue55": "0.0000000000000001665334536937730000",
-                    "DcaASellValue56": "0.0000000000000000832667268468867000",
-                    "DcaASellValue57": "0.0000000000000000416333634234434000",
-                    "DcaASellValue58": "0.0000000000000000208166817117217000",
-                    "DcaASellValue59": "0.0000000000000000104083408558608000",
-                    "DcaASellValue60": "0.0000000000000000052041704279304200",
-                    "DcaASellValue61": "0.0000000000000000026020852139652100",
-                    "DcaASellValue62": "0.0000000000000000013010426069826100",
-                    "DcaASellValue63": "0.0000000000000000006505213034913030",
-                    "DcaASellValue64": "0.0000000000000000003252606517456510",
-                    "DcaASellValue65": "0.0000000000000000001626303258728260",
-                    "DcaASellValue66": "0.0000000000000000000813151629364128",
-                    "DcaASellValue67": "0.0000000000000000000406575814682064",
-                    "DcaASellValue68": "0.0000000000000000000203287907341032",
-                    "DcaASellValue69": "0.0000000000000000000101643953670516",
-                    "DcaASellValue70": "0.0000000000000000000050821976835258",
-                    "DcaASellValue71": "0.0000000000000000000025410988417629",
-                    "DcaASellValue72": "0.0000000000000000000012705494208815",
-                    "DcaASellValue73": "0.0000000000000000000006352747104407",
-                    "DcaASellValue74": "0.0000000000000000000003176373552204",
-                    "DcaASellValue75": "0.0000000000000000000001588186776102",
-                    "DcaASellValue76": "0.0000000000000000000000794093388051",
-                    "DcaASellValue77": "0.0000000000000000000000397046694025",
-                    "DcaASellValue78": "0.0000000000000000000000198523347013",
-                    "DcaASellValue79": "0.0000000000000000000000099261673506",
-                    "DcaASellValue80": "0.0000000000000000000000049630836753",
-                    "DcaASellValue81": "0.0000000000000000000000024815418377",
-                    "DcaASellValue82": "0.0000000000000000000000012407709188",
-                    "DcaASellValue83": "0.0000000000000000000000006203854594",
-                    "DcaASellValue84": "0.0000000000000000000000003101927297",
-                    "DcaASellValue85": "0.0000000000000000000000001550963649",
-                    "DcaASellValue86": "0.0000000000000000000000000775481824",
-                    "DcaASellValue87": "0.0000000000000000000000000387740912",
-                    "DcaASellValue88": "0.0000000000000000000000000193870456",
-                    "DcaASellValue89": "0.0000000000000000000000000096935228",
-                    "DcaASellValue90": "0.0000000000000000000000000048467614",
-                    "DcaASellValue91": "0.0000000000000000000000000024233807",
-                    "DcaASellValue92": "0.0000000000000000000000000012116904",
-                    "DcaASellValue93": "0.0000000000000000000000000006058452",
-                    "DcaASellValue94": "0.0000000000000000000000000003029226",
-                    "DcaASellValue95": "0.0000000000000000000000000001514613",
-                    "DcaASellValue96": "0.0000000000000000000000000000757306",
-                    "DcaASellValue97": "0.0000000000000000000000000000378653",
-                    "DcaASellValue98": "0.0000000000000000000000000000189327",
-                    "DcaASellValue99": "0.0000000000000000000000000000094663",
-                    "DcaASellValue100": "0.0000000000000000000000000000047332",
-                    "Weight": "669"
+                    "DcaTrailingProfit": "0.29", //set to 0.29 for bullmarket, 0.163 for bear
+                    "Weight": "910"
                 }
             },
         ]
@@ -1118,4 +1146,5 @@
             },
         ]
     },
+  
 }
