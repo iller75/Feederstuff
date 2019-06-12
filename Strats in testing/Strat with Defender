@@ -87,7 +87,7 @@
         // B A L A N C E S
         // -------------------------------------------------------------------------------------------------------------------------------------------------
         "MaxTradingPairs": "20", // changed from 50 pairs was 60
-        "DcaMaxTradingPairs": "4",
+        "DcaMaxTradingPairs": "6",
         "StartBalance": "942",
         "KeepBalancePercentage": "70", //27 nov changed from 20% (was 80)
         "DcaKeepBalancePercentage": "0", //27 nov changed from 0%
