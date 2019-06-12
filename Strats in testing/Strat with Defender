@@ -7,6 +7,7 @@
 // USE AT OWN RISK! 
 
 
+
 {
     "PtFeeder": {
         "BaseCurrency": "USDT",
@@ -86,7 +87,7 @@
         // B A L A N C E S
         // -------------------------------------------------------------------------------------------------------------------------------------------------
         "MaxTradingPairs": "20", // changed from 50 pairs was 60
-        "DcaMaxTradingPairs": "6",
+        "DcaMaxTradingPairs": "4",
         "StartBalance": "942",
         "KeepBalancePercentage": "70", //27 nov changed from 20% (was 80)
         "DcaKeepBalancePercentage": "0", //27 nov changed from 0%
@@ -125,7 +126,7 @@
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         // DCA Buy Percentages
         // ----------------------------------------------------------------------------------------------------------------------------------------------        
-        "DcaBuyPercentage1": "50", //75 for less conservative
+        "DcaBuyPercentage1": "95", //75 for less conservative
         "DcaBuyPercentage2": "33", //50 for less conservative
         "DcaBuyPercentage3": "25",
         "DcaBuyPercentage4": "20",
@@ -514,12 +515,38 @@
                     "BSellValue": "30",
                     //"BSellValueLimit": "50",
                     // DCA //
-                    "DcaEnabled":"false",
-                    "TrailingStopLossTriggerArm": "2.5",
-                    "TrailingStopLossTrigger": "-0.5",
-                    "TrailingProfitType": "SHRINK",
+                    //"DcaEnabled":"-1.25",
+                    "DcaABuyStrategyLabel":"BBSB",
+                    "DcaABuyStrategy":"LOWBB",
+                    "DcaABuyValue":"35",
+                    "DcaABuyValueLimit":"-30",
+                    "DcaBBuyStrategyLabel":"EMABEAR",
+                    "DcaBBuyStrategy":"EMAGAIN",
+                    "DcaBBuyValue":"-0.1",
+                    "DcaBBuyValueLimit":"-3",
+                    "DcaCBuyStrategy":"MACD",
+                    "DcaCBuyValue":"-0.00000001",
+                    "DcaCBuyValueLimit":"-0.01",
+                    "DcaCBuyStrategyLabel":"EMABEAR",
+                    "DcaDBuyStrategy":"EMASPREAD",
+                    "DcaDBuyValue":"-0.01",
+                    "DcaDBuyValueLimit":"-0.25",
+                    "DcaEBuyStrategyLabel":"RSIBEAR",
+                    "DcaEBuyStrategy":"RSI",
+                    "DcaEBuyValue":"50",
+                    "DcaEBuyValueLimit":"0",
+                    "DcaTrailingBuy":"0.5",
+                    "DcaBuyTrigger":"-1",
                     "DcaASellStrategy": "GAIN",
-                    "DcaASellValue": "1.25", 
+                    "DcaASellValue": "1.25",
+                    "DcaBSellStrategyLabel":"BBSB",
+                    "DcaBSellStrategy":"HIGHBB",
+                    "DcaBSellValue":"35",
+                    "DcaCSellStrategy":"RSI",
+                    "DcaCSellValue":"50",
+                    "TrailingStopLossTriggerArm": "2",
+                    "TrailingStopLossTrigger": "-0.3",
+                    "TrailingProfitType": "SHRINK",
                     "MinBuyVolume": "500000",
                     "DcaMinBuyVolume": "500000",
                     "DcaTrailingStopLossTriggerArm": "2",
@@ -563,7 +590,7 @@
                     "BSellValue": "30",
                     //"BSellValueLimit": "50",
                     // DCA //
-                    "DcaEnabled":"-1.25",
+                    //"DcaEnabled":"-1.25",
                     "DcaABuyStrategyLabel":"BBSB",
                     "DcaABuyStrategy":"LOWBB",
                     "DcaABuyValue":"35",
@@ -635,7 +662,7 @@
                     "BSellValue": "30",
                     //"BSellValueLimit": "50",
                     // DCA //
-                    "DcaEnabled":"-1.25",
+                    //"DcaEnabled":"-1.25",
                     "DcaABuyStrategyLabel":"BBSB",
                     "DcaABuyStrategy":"LOWBB",
                     "DcaABuyValue":"35",
@@ -711,7 +738,7 @@
                     "TrailingStopLossTrigger": "-0.5",
                     "TrailingProfitType": "GROW",
                     // DCA //
-                    "DcaEnabled":"-1.5", 
+                    //"DcaEnabled":"-1.5", 
                     "DcaABuyStrategy": "DEMACROSS",
                     "DcaABuyValue": "0.01",
                     "DcaABuyValueLimit": "20",
@@ -787,7 +814,7 @@
                     "TrailingStopLossTrigger": "-0.5",
                     "TrailingProfitType": "GROW",
                     // DCA //
-                    "DcaEnabled":"-1.5", 
+                    //"DcaEnabled":"-1.5", 
                     "DcaABuyStrategy": "DEMACROSS",
                     "DcaABuyValue": "0.01",
                     "DcaABuyValueLimit": "20",
@@ -953,7 +980,7 @@
         "Condition": "[pair.PendingCount] >= 1 && [pair.Profit] <= [config.TriggerName] ",
         "Configs": [
             {
-                "TriggerName": "-2",
+                "TriggerName": "-1",
                 "Override": {
                     "SellOnlyModeEnabled":"false",
                     //---PAIRS Properties ---//
@@ -967,48 +994,48 @@
                     "MinBuyVolume": "0", // Set to 0 for Defending bags configuration
                     // Disabling all other buy strats
                     //"ABuyStrategy": "DISABLED",
-                    "EBuyStrategy": "DISABLED",
-                    "FBuyStrategy": "DISABLED",
-                    "GBuyStrategy": "DISABLED",
-                    "HBuyStrategy": "DISABLED",
-                    "IBuyStrategy": "DISABLED",
-                    "JBuyStrategy": "DISABLED",
+                    //"EBuyStrategy": "DISABLED",
+                    //"FBuyStrategy": "DISABLED",
+                    //"GBuyStrategy": "DISABLED",
+                    //"HBuyStrategy": "DISABLED",
+                    //"IBuyStrategy": "DISABLED",
+                    //"JBuyStrategy": "DISABLED",
                     //Enable the EMASPREAD for more conservative settings
                     // Use these buy strats for buying defended coins
-                    "ABuyStrategyLabel":"EMADCA",
-                    "ABuyStrategy": "EMASPREAD",
-                    "ABuyValue": "-0.1",
-                    "ABuyValueLimit": "-10",
-                    "BBuyStrategyLabel": "EMADCA",
-                    "BBuyStrategy": "EMAGAIN",
-                    "BBuyValue": "-0.1",
-                    "BBuyValueLimit": "-30",
-                    "CBuyStrategyLabel": "BBDCA",
-                    "CBuyStrategy": "LOWBB",
-                    "CBuyValue": "35", //25 for more conservative
-                    "CBuyValueLimit": "-35",
-                    "DBuyStrategyLabel": "RSIDCA",
-                    "DBuyStrategy": "RSI",
-                    "DBuyValue": "36",
-                    "DBuyValueLimit": "0",
+                    //"ABuyStrategyLabel":"EMADCA",
+                    //"ABuyStrategy": "EMASPREAD",
+                    //"ABuyValue": "-0.1",
+                    //"ABuyValueLimit": "-10",
+                    //"BBuyStrategyLabel": "EMADCA",
+                    //"BBuyStrategy": "EMAGAIN",
+                    //"BBuyValue": "-0.1",
+                    //"BBuyValueLimit": "-30",
+                    //"CBuyStrategyLabel": "BBDCA",
+                    //"CBuyStrategy": "LOWBB",
+                    //"CBuyValue": "35", //25 for more conservative
+                    //"CBuyValueLimit": "-35",
+                    //"DBuyStrategyLabel": "RSIDCA",
+                    //"DBuyStrategy": "RSI",
+                    //"DBuyValue": "36",
+                    //"DBuyValueLimit": "0",
                     // CryptoGnome PT-Defender starting/medium risk sell strategy properties
-                    "BSellStrategy": "DISABLED",
-                    "CSellStrategy": "DISABLED",
-                    "DSellStrategy": "DISABLED",
-                    "ESellStrategy": "DISABLED",
-                    "FSellStrategy": "DISABLED",
-                    "GSellStrategy": "DISABLED",
-                    "HSellStrategy": "DISABLED",
-                    "ISellStrategy": "DISABLED",
-                    "JSellStrategy": "DISABLED",
-                    "KSellStrategy": "DISABLED",
-                    "ASellStrategy": "GAIN",
-                    "ASellValue": "0.88",
-                    "TrailingProfit": "0.129",
+                    //"BSellStrategy": "DISABLED",
+                    //"CSellStrategy": "DISABLED",
+                    //"DSellStrategy": "DISABLED",
+                    //"ESellStrategy": "DISABLED",
+                    //"FSellStrategy": "DISABLED",
+                    //"GSellStrategy": "DISABLED",
+                    //"HSellStrategy": "DISABLED",
+                    //"ISellStrategy": "DISABLED",
+                    //"JSellStrategy": "DISABLED",
+                    //"KSellStrategy": "DISABLED",
+                    //"ASellStrategy": "GAIN",
+                    //"ASellValue": "0.88",
+                    //"TrailingProfit": "0.129",
                     "MaxProfit": "18",
                     "TakeProfitWaitTime": "15",
-                    "TakeProfitPercentage": "0.75",
-                    "TakeProfitResetPercentageMove": "0.3",
+                    //"TakeProfitPercentage": "0.75",
+                    //"TakeProfitResetPercentageMove": "0.3",
                     //---DCA Properties ---//
                     "DcaEnabled": "true",
                     "DcaMaxCost": "600",
@@ -1023,33 +1050,33 @@
                     // DCA buy strategies
                     // Disable all other Dca Buy Strats
                     //"DcaABuyStrategy": "DISABLED",
-                    "DcaBBuyStrategy": "DISABLED",
-                    "DcaFBuyStrategy": "DISABLED",
-                    "DcaGBuyStrategy": "DISABLED",
-                    "DcaHBuyStrategy": "DISABLED",
-                    "DcaIBuyStrategy": "DISABLED",
-                    "DcaJBuyStrategy": "DISABLED",
+                    //"DcaBBuyStrategy": "DISABLED",
+                    //"DcaFBuyStrategy": "DISABLED",
+                    //"DcaGBuyStrategy": "DISABLED",
+                    //"DcaHBuyStrategy": "DISABLED",
+                    //"DcaIBuyStrategy": "DISABLED",
+                    //"DcaJBuyStrategy": "DISABLED",
                     // Use these as Dca Buy strats 
-                    "DcaABuyStrategyLabel": "EMADCA",  //Uncomment for less agressive
-                    "DcaABuyStrategy": "EMACROSS",     
-                    "DcaABuyValue": "-0.01",
-                    "DcaABuyValueLimit": "-10",
+                    //"DcaABuyStrategyLabel": "EMADCA",  //Uncomment for less agressive
+                    //"DcaABuyStrategy": "EMACROSS",     
+                    //"DcaABuyValue": "-0.01",
+                    //"DcaABuyValueLimit": "-10",
                     //"DcaBBuyStrategyLabel": "EMADCA", //Uncomment for less agressive
                     //"DcaBBuyStrategy": "EMASPREAD",
                     //"DcaBBuyValue": "-0.1",
                     //"DcaBBuyValueLimit": "-10",
-                    "DcaCBuyStrategyLabel": "EMADCA",
-                    "DcaCBuyStrategy": "EMAGAIN",
-                    "DcaCBuyValue": "-0.1",
-                    "DcaCBuyValueLimit": "-30",
-                    "DcaDBuyStrategyLabel": "BBDCA",
-                    "DcaDBuyStrategy": "LOWBB",
-                    "DcaDBuyValue": "35", //less agressive set to 35, agressive 36
-                    "DcaDBuyValueLimit": "-35",
-                    "DcaEBuyStrategyLabel": "RSIDCA",
-                    "DcaEBuyStrategy": "RSI",
-                    "DcaEBuyValue": "36", //less agressive set to 36, agressive 35
-                    "DcaEBuyValueLimit": "0",
+                    //"DcaCBuyStrategyLabel": "EMADCA",
+                    //"DcaCBuyStrategy": "EMAGAIN",
+                    //"DcaCBuyValue": "-0.1",
+                    //"DcaCBuyValueLimit": "-30",
+                    //"DcaDBuyStrategyLabel": "BBDCA",
+                    //"DcaDBuyStrategy": "LOWBB",
+                    //"DcaDBuyValue": "35", //less agressive set to 35, agressive 36
+                    //"DcaDBuyValueLimit": "-35",
+                    //"DcaEBuyStrategyLabel": "RSIDCA",
+                    //"DcaEBuyStrategy": "RSI",
+                    //"DcaEBuyValue": "36", //less agressive set to 36, agressive 35
+                    //"DcaEBuyValueLimit": "0",
                     "DcaBuyTrigger": "-1",
                     // DCA Sell Settings
                     "DcaOrderbookProfitCalculation": "true",
@@ -1058,20 +1085,20 @@
                     "DcaTakeProfitPercentage": "0.85",
                     "DcaTakeProfitResetPercentageMove": "0.3",
                     // DCA Sell Strategies
-                    "DcaCSellStrategy": "DISABLED",
-                    "DcaDSellStrategy": "DISABLED",
-                    "DcaESellStrategy": "DISABLED",
-                    "DcaFSellStrategy": "DISABLED",
-                    "DcaGSellStrategy": "DISABLED",
-                    "DcaHSellStrategy": "DISABLED",
-                    "DcaISellStrategy": "DISABLED",
-                    "DcaJSellStrategy": "DISABLED",
-                    "DcaASellStrategy": "GAIN",
-                    "DcaASellValue": "1",
-                    "DcaBSellStrategyLabel": "RSIDCA",
-                    "DcaBSellStrategy": "RSI",
-                    "DcaBSellValue": "40",
-                    "DcaBSellValueLimit": "100",
+                    //"DcaCSellStrategy": "DISABLED",
+                    //"DcaDSellStrategy": "DISABLED",
+                    //"DcaESellStrategy": "DISABLED",
+                    //"DcaFSellStrategy": "DISABLED",
+                    //"DcaGSellStrategy": "DISABLED",
+                    //"DcaHSellStrategy": "DISABLED",
+                    //"DcaISellStrategy": "DISABLED",
+                    //"DcaJSellStrategy": "DISABLED",
+                    //"DcaASellStrategy": "GAIN",
+                    //"DcaASellValue": "1",
+                    //"DcaBSellStrategyLabel": "RSIDCA",
+                    //"DcaBSellStrategy": "RSI",
+                    //"DcaBSellValue": "40",
+                    //"DcaBSellValueLimit": "100",
                     "DcaTrailingProfit": "0.29", //set to 0.29 for bullmarket, 0.163 for bear
                     "Weight": "910"
                 }
