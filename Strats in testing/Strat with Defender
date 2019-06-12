@@ -6,8 +6,6 @@
 // This version is supposed to be used together with defender!
 // USE AT OWN RISK! 
 
-
-
 {
     "PtFeeder": {
         "BaseCurrency": "USDT",
@@ -346,7 +344,7 @@
 
         // BEAR EMA //
         "IndicatorsEmabearCrossCandles": "40",
-        "IndicatorsEmabearcandlePeriod": "300",
+        "IndicatorsEmabearCandlePeriod": "300",
         "IndicatorsEmabearFastLength": "8",
         "IndicatorsEmabearSlowLength": "13",
 
@@ -491,7 +489,7 @@
                     "TrailingBuy":"0.5",
                     "ABuyStrategyLabel":"EMABEAR",
                     "ABuyStrategy":"EMACROSS",
-                    "ABuyValue":"-0.,01",
+                    "ABuyValue":"-0.01",
                     "ABuyValueLimit":"-10",
                     "BBuyStrategy":"SMACROSS",
                     "BBuyValue":"-0.01",
@@ -566,7 +564,7 @@
                     "TrailingBuy":"0.5",
                     "ABuyStrategyLabel":"EMABEAR",
                     "ABuyStrategy":"EMACROSS",
-                    "ABuyValue":"-0.,01",
+                    "ABuyValue":"-0.01",
                     "ABuyValueLimit":"-10",
                     "BBuyStrategy":"SMACROSS",
                     "BBuyValue":"-0.01",
@@ -638,7 +636,7 @@
                     "TrailingBuy":"0.5",
                     "ABuyStrategyLabel":"EMABEAR",
                     "ABuyStrategy":"EMACROSS",
-                    "ABuyValue":"-0.,01",
+                    "ABuyValue":"-0.01",
                     "ABuyValueLimit":"-10",
                     "BBuyStrategy":"SMACROSS",
                     "BBuyValue":"-0.01",
@@ -1118,8 +1116,8 @@
                     "DcaTakeProfitPercentage": "0.3",
                     "DcaTakeProfitResetPercentageMove": "0.1",
                     "Weight": "807"
-                },
-            },
+                }
+            }
         ]
     },
     "ChangeTakeprofit2Grouping": {
@@ -1136,7 +1134,7 @@
                     "DcaTakeProfitResetPercentageMove": "0.2",
                     "Weight": "808"
                 }
-            },
+            }
         ]
     },
     "ChangeTakeprofit3Grouping": {
@@ -1153,7 +1151,7 @@
                     "DcaTakeProfitResetPercentageMove": "0.5",
                     "Weight": "809"
                 }
-            },
+            }
         ]
     },
     "ChangeTakeprofit4Grouping": {
@@ -1170,8 +1168,21 @@
                     "DcaTakeProfitResetPercentageMove": "0.8",
                     "Weight": "810"
                 }
-            },
+            }
         ]
     },
+    "EnablesomGrouping": {
+    "Condition": "(([positions.TotalPairsBoughtCost] + [positions.TotalDcaBoughtCost]) / [positions.RealBalance]) * 100 <= [config.Drawdown]",
+          "Configs": [
+              {
+                  "Drawdown" : "10", //if  using  more than ten % then do these...
+                "Override":{
+                    "SellOnlyModeEnabled":"true",
+
+                }
+              },
+
+          ]
+      }
   
 }
