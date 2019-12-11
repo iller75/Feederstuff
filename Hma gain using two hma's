@@ -917,7 +917,7 @@
                 "Condition":" [pair.ShortEma(2)] > [pair.LongEma(2)]", //[pair.LastPrice] && [pair.VwmaPercentageChange] > 2   && [pair.Vwap(2)] >= 0.1 && [pair.Atrp(2)] >= 0.1
                 "Configs":[{
                         "Override":{
-                            "InsertSnippets": "5Min,5Mindca",
+                            "InsertSnippets": "1Hour,1Hourdca",
                             "Weight":"970" 
                             }
                             }
