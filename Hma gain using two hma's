@@ -72,7 +72,7 @@
           // B A L A N C E S
           // -------------------------------------------------------------------------------------------------------------------------------------------------
           "MaxTradingPairs": "22", // changed from 50 pairs was 60
-          "DcaMaxTradingPairs": "4",
+          "DcaMaxTradingPairs": "5",
           
           //"KeepBalance": "70%", //27 nov changed from 20% (was 80)
           "DcaKeepBalance": "0%", //27 nov changed from 0%
@@ -356,7 +356,7 @@
                 "SellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
     
                 "ASellStrategy":"GAIN",
-                "ASellValue": "1.8",
+                "ASellValue": "1.5",
     
                 "BSellStrategyLabel":"BB",
                 "BSellStrategy": "HIGHBB",
@@ -401,7 +401,7 @@
                 "DcaSellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
     
                 "DcaASellStrategy":"GAIN",
-                "DcaASellValue": "1.8",
+                "DcaASellValue": "1.5",
     
                 "DcaBSellStrategyLabel":"BB",
                 "DcaBSellStrategy": "HIGHBB",
@@ -532,7 +532,7 @@
                 "SellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
     
                 "ASellStrategy":"GAIN",
-                "ASellValue": "1.8",
+                "ASellValue": "1.25",
     
                 "BSellStrategyLabel":"BB",
                 "BSellStrategy": "HIGHBB",
@@ -577,7 +577,7 @@
                 "DcaSellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
     
                 "DcaASellStrategy":"GAIN",
-                "DcaASellValue": "1.8",
+                "DcaASellValue": "1.25",
     
                 "DcaBSellStrategyLabel":"BB",
                 "DcaBSellStrategy": "HIGHBB",
@@ -708,7 +708,7 @@
                 "SellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
     
                 "ASellStrategy":"GAIN",
-                "ASellValue": "1.8",
+                "ASellValue": "1",
     
                 "BSellStrategyLabel":"BB",
                 "BSellStrategy": "HIGHBB",
@@ -753,7 +753,7 @@
                 "DcaSellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
     
                 "DcaASellStrategy":"GAIN",
-                "DcaASellValue": "1.8",
+                "DcaASellValue": "1",
     
                 "DcaBSellStrategyLabel":"BB",
                 "DcaBSellStrategy": "HIGHBB",
@@ -793,12 +793,12 @@
                 // Trailing Stop
   
                 "TrailingStopLossStrategy":"ATRPERCENTAGE",
-                "TrailingStopLossTrigger":"0.5 * V",
+                "TrailingStopLossTrigger":"0.7 * V",
                 "DcaTrailingStopLossStrategy":"ATRPERCENTAGE",
-                "DcaTrailingStopLossTrigger":"0.5 * V",
+                "DcaTrailingStopLossTrigger":"0.7 * V",
                
-                "TrailingStopLossTriggerArm":"1.8",
-                "DcaTrailingStopLossTriggerArm":"1.8",
+                "TrailingStopLossTriggerArm":"1",
+                "DcaTrailingStopLossTriggerArm":"1",
       
                 "Weight":"290"
               },
@@ -914,6 +914,29 @@
               "DcaTrailingProfitType":"GROW",
   
               "Weight":"505"
+            },
+
+            {"SnippetName": "PossDca",
+                "DcaRebuyTimeout": "5",
+                
+
+                //Possitive  DCA BUY SETTINGS //
+
+
+                "DcaGBuyStrategy": "PROFITPERCENTAGE",
+
+                "DcaFBuyValue": "3",
+
+                "DcaBuyPercentage": "50",
+                "DcaBuyPercentage1": "100",
+                "DcaBuyPercentage2": "50",
+                "DcaBuyPercentage3": "33",
+                "DcaBuyPercentage4": "25",
+                "DcaBuyPercentage5": "20",
+
+                "DcaEnabled": "2",
+                
+                "Weight":"550"
             }
         ],
   
@@ -933,7 +956,168 @@
   
                     "SellWallOrderbookDepth": "50",
                     "SellWallDiffPercentage": "5000",
+                   
+                     // Dca Buy Settings
 
+                    "DcaTrailingBuy":"0",
+
+                    "DcaBuyStrategyFormula": "(A || B) && (C && D && F && G)",
+
+                    "DcaABuyStrategyLabel":"MACD1HOUR",
+                    "DcaABuyStrategy":"MACD",
+                    "DcaABuyValue":"0.0000002",
+
+                    "DcaBBuyStrategyLabel":"MACD1HOURLONG",
+                    "DcaBBuyStrategy":"MACD",
+                    "DcaBBuyValue":"0.00000002",
+
+                    "DcaCBuyStrategyLabel":"HMAENTRY1HOURSHORT",
+                    "DcaCBuyStrategy": "HMAGAIN",
+                    "DcaCBuyValue":"0.1",
+
+                    "DcaFBuyStrategyLabel":"HMAENTRY1HOURLONG",
+                    "DcaFBuyStrategy": "HMAGAIN",
+                    "DcaFBuyValue":"0.1",
+
+                    //"DcaCBuyStrategyLabel":"HMAENTRY4HOUR",
+                    //"DcaCBuyStrategy": "HMASPREAD",
+                    //"DcaCBuyValue":"0.15",
+
+                    "DcaDBuyStrategyLabel":"STOCH1HOUR",
+                    "DcaDBuyStrategy": "STOCH",
+                    "DcaDBuyValue":"49",
+                    "DcaDBuyStrategyDirection":"UP",
+
+                    "DcaEBuyStrategyLabel":"OBV1HOUR",
+                    "DcaEBuyStrategy": "OBV",
+                    "DcaEBuyValue":"0.015",
+
+                    "DcaGBuyStrategy": "PROFITPERCENTAGE",
+
+                    "DcaGBuyValue": "-2",
+                    "DcaGBuyValue1": "-3",
+                    "DcaGBuyValue2": "-3",
+                    "DcaGBuyValue3": "-4",
+                    "DcaGBuyValue4": "-5",
+                    "DcaGBuyValue5": "-7",
+                    "DcaGBuyValue6": "-8",
+                    "DcaGBuyValue7": "-3",
+                    "DcaGBuyValue8": "-6",
+                    "DcaGBuyValue9": "-9",
+                    "DcaGBuyValue10": "-12",
+        
+                    "DcaBuyPercentage": "100",
+                    "DcaBuyPercentage1": "100",
+                    "DcaBuyPercentage2": "100",
+                    "DcaBuyPercentage3": "100",
+                    "DcaBuyPercentage4": "100",
+                    "DcaBuyPercentage5": "100",
+                    "DcaBuyPercentage6": "100",
+                    "DcaBuyPercentage7": "14.2857142857143",
+                    "DcaBuyPercentage8": "12.5",
+                    "DcaBuyPercentage9": "11.1111111111111",
+                    "DcaBuyPercentage10": "10",
+                    "DcaBuyPercentage11": "9.09090909090909",
+
+                    // Exit Settings
+
+                    "TrailingProfit":"0.03",               
+                    "TrailingProfitType":"DEFAULT",
+
+                    "SellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+
+                    "ASellStrategy":"GAIN",
+                    "ASellValue": "1.25",
+
+                    "BSellStrategyLabel":"BB",
+                    "BSellStrategy": "HIGHBB",
+                    "BSellValue":"-5",
+                    "BSellValueLimit":"-150",
+
+                    "CSellStrategyLabel":"PDHIGH",
+                    "CSellStrategy":"PDHIGH",
+                    "CSellValue":"-0.00000001",
+                    "CSellValueLimit":"-30",
+
+                    "DSellStrategyLabel":"STOCHEXIT",
+                    "DSellStrategy": "STOCH",
+                    "DSellValue":"65",
+                    "DSellValueLimit":"79.9",
+
+                    "ESellStrategyLabel":"STOCHBULLISH",
+                    "ESellStrategy": "STOCH",
+                    "ESellValue":"80",
+
+                    "FSellStrategyLabel":"STOCHBULLISH15",
+                    "FSellStrategy": "STOCH",
+                    "FSellValue":"80",
+
+                    "GSellStrategyLabel":"STOCHBULLISH1",
+                    "GSellStrategy": "STOCH",
+                    "GSellValue":"80",
+
+                    "HSellStrategyLabel":"STOCHBULLISH4",
+                    "HSellStrategy": "STOCH",
+                    "HSellValue":"80",
+
+                    "ISellStrategyLabel":"STOCHBULLISH1D",
+                    "ISellStrategy": "STOCH",
+                    "ISellValue":"80",
+
+                    // Dca Exit Settings
+
+                    "DcaTrailingProfit":"0.03",               
+                    "DcaTrailingProfitType":"DEFAULT",
+
+                    "DcaSellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+
+                    "DcaASellStrategy":"GAIN",
+                    "DcaASellValue": "1.25",
+
+                    "DcaBSellStrategyLabel":"BB",
+                    "DcaBSellStrategy": "HIGHBB",
+                    "DcaBSellValue":"-5",
+                    "DcaBSellValueLimit":"-150",
+
+                    "DcaCSellStrategyLabel":"PDHIGH",
+                    "DcaCSellStrategy":"PDHIGH",
+                    "DcaCSellValue":"-0.00000001",
+                    "DcaCSellValueLimit":"-30",
+
+                    "DcaDSellStrategyLabel":"STOCHEXIT",
+                    "DcaDSellStrategy": "STOCH",
+                    "DcaDSellValue":"65",
+                    "DcaDSellValueLimit":"79.9",
+
+                    "DcaESellStrategyLabel":"STOCHBULLISH",
+                    "DcaESellStrategy": "STOCH",
+                    "DcaESellValue":"80",
+
+                    "DcaFSellStrategyLabel":"STOCHBULLISH15",
+                    "DcaFSellStrategy": "STOCH",
+                    "DcaFSellValue":"80",
+
+                    "DcaGSellStrategyLabel":"STOCHBULLISH1",
+                    "DcaGSellStrategy": "STOCH",
+                    "DcaGSellValue":"80",
+
+                    "DcaHSellStrategyLabel":"STOCHBULLISH4",
+                    "DcaHSellStrategy": "STOCH",
+                    "DcaHSellValue":"80",
+
+                    "DcaISellStrategyLabel":"STOCHBULLISH1D",
+                    "DcaISellStrategy": "STOCH",
+                    "DcaISellValue":"80",
+
+                    // Trailing Stop
+
+                    "TrailingStopLossStrategy":"ATRPERCENTAGE",
+                    "TrailingStopLossTrigger":"0.5 * V",
+                    "DcaTrailingStopLossStrategy":"ATRPERCENTAGE",
+                    "DcaTrailingStopLossTrigger":"0.5 * V",
+
+                    "TrailingStopLossTriggerArm":"1.25",
+                    "DcaTrailingStopLossTriggerArm":"1.25",
                     
   
                     "Weight": "96"
@@ -948,7 +1132,170 @@
                     "Override": {
                     "SellWallOrderbookDepth": "50",
                     "SellWallDiffPercentage": "5000",
+                    
+                   
 
+                    // Dca Buy Settings
+
+                    "DcaTrailingBuy":"0",
+
+                    "DcaBuyStrategyFormula": "(A || B) && (C && D && F && G)",
+
+                    "DcaABuyStrategyLabel":"MACD1HOUR",
+                    "DcaABuyStrategy":"MACD",
+                    "DcaABuyValue":"0.0000002",
+
+                    "DcaBBuyStrategyLabel":"MACD1HOURLONG",
+                    "DcaBBuyStrategy":"MACD",
+                    "DcaBBuyValue":"0.00000002",
+
+                    "DcaCBuyStrategyLabel":"HMAENTRY1HOURSHORT",
+                    "DcaCBuyStrategy": "HMAGAIN",
+                    "DcaCBuyValue":"0.1",
+
+                    "DcaFBuyStrategyLabel":"HMAENTRY1HOURLONG",
+                    "DcaFBuyStrategy": "HMAGAIN",
+                    "DcaFBuyValue":"0.1",
+
+                    //"DcaCBuyStrategyLabel":"HMAENTRY4HOUR",
+                    //"DcaCBuyStrategy": "HMASPREAD",
+                    //"DcaCBuyValue":"0.15",
+
+                    "DcaDBuyStrategyLabel":"STOCH1HOUR",
+                    "DcaDBuyStrategy": "STOCH",
+                    "DcaDBuyValue":"49",
+                    "DcaDBuyStrategyDirection":"UP",
+
+                    "DcaEBuyStrategyLabel":"OBV1HOUR",
+                    "DcaEBuyStrategy": "OBV",
+                    "DcaEBuyValue":"0.015",
+
+                    "DcaGBuyStrategy": "PROFITPERCENTAGE",
+
+                    "DcaGBuyValue": "-2",
+                    "DcaGBuyValue1": "-3",
+                    "DcaGBuyValue2": "-3",
+                    "DcaGBuyValue3": "-4",
+                    "DcaGBuyValue4": "-5",
+                    "DcaGBuyValue5": "-7",
+                    "DcaGBuyValue6": "-8",
+                    "DcaGBuyValue7": "-3",
+                    "DcaGBuyValue8": "-6",
+                    "DcaGBuyValue9": "-9",
+                    "DcaGBuyValue10": "-12",
+        
+                    "DcaBuyPercentage": "100",
+                    "DcaBuyPercentage1": "100",
+                    "DcaBuyPercentage2": "100",
+                    "DcaBuyPercentage3": "100",
+                    "DcaBuyPercentage4": "100",
+                    "DcaBuyPercentage5": "100",
+                    "DcaBuyPercentage6": "100",
+                    "DcaBuyPercentage7": "14.2857142857143",
+                    "DcaBuyPercentage8": "12.5",
+                    "DcaBuyPercentage9": "11.1111111111111",
+                    "DcaBuyPercentage10": "10",
+                    "DcaBuyPercentage11": "9.09090909090909",
+
+                    // Exit Settings
+
+                    "TrailingProfit":"0.03",               
+                    "TrailingProfitType":"DEFAULT",
+
+                    "SellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+
+                    "ASellStrategy":"GAIN",
+                    "ASellValue": "1.25",
+
+                    "BSellStrategyLabel":"BB",
+                    "BSellStrategy": "HIGHBB",
+                    "BSellValue":"-5",
+                    "BSellValueLimit":"-150",
+
+                    "CSellStrategyLabel":"PDHIGH",
+                    "CSellStrategy":"PDHIGH",
+                    "CSellValue":"-0.00000001",
+                    "CSellValueLimit":"-30",
+
+                    "DSellStrategyLabel":"STOCHEXIT",
+                    "DSellStrategy": "STOCH",
+                    "DSellValue":"65",
+                    "DSellValueLimit":"79.9",
+
+                    "ESellStrategyLabel":"STOCHBULLISH",
+                    "ESellStrategy": "STOCH",
+                    "ESellValue":"80",
+
+                    "FSellStrategyLabel":"STOCHBULLISH15",
+                    "FSellStrategy": "STOCH",
+                    "FSellValue":"80",
+
+                    "GSellStrategyLabel":"STOCHBULLISH1",
+                    "GSellStrategy": "STOCH",
+                    "GSellValue":"80",
+
+                    "HSellStrategyLabel":"STOCHBULLISH4",
+                    "HSellStrategy": "STOCH",
+                    "HSellValue":"80",
+
+                    "ISellStrategyLabel":"STOCHBULLISH1D",
+                    "ISellStrategy": "STOCH",
+                    "ISellValue":"80",
+
+                    // Dca Exit Settings
+
+                    "DcaTrailingProfit":"0.03",               
+                    "DcaTrailingProfitType":"DEFAULT",
+
+                    "DcaSellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+
+                    "DcaASellStrategy":"GAIN",
+                    "DcaASellValue": "1.25",
+
+                    "DcaBSellStrategyLabel":"BB",
+                    "DcaBSellStrategy": "HIGHBB",
+                    "DcaBSellValue":"-5",
+                    "DcaBSellValueLimit":"-150",
+
+                    "DcaCSellStrategyLabel":"PDHIGH",
+                    "DcaCSellStrategy":"PDHIGH",
+                    "DcaCSellValue":"-0.00000001",
+                    "DcaCSellValueLimit":"-30",
+
+                    "DcaDSellStrategyLabel":"STOCHEXIT",
+                    "DcaDSellStrategy": "STOCH",
+                    "DcaDSellValue":"65",
+                    "DcaDSellValueLimit":"79.9",
+
+                    "DcaESellStrategyLabel":"STOCHBULLISH",
+                    "DcaESellStrategy": "STOCH",
+                    "DcaESellValue":"80",
+
+                    "DcaFSellStrategyLabel":"STOCHBULLISH15",
+                    "DcaFSellStrategy": "STOCH",
+                    "DcaFSellValue":"80",
+
+                    "DcaGSellStrategyLabel":"STOCHBULLISH1",
+                    "DcaGSellStrategy": "STOCH",
+                    "DcaGSellValue":"80",
+
+                    "DcaHSellStrategyLabel":"STOCHBULLISH4",
+                    "DcaHSellStrategy": "STOCH",
+                    "DcaHSellValue":"80",
+
+                    "DcaISellStrategyLabel":"STOCHBULLISH1D",
+                    "DcaISellStrategy": "STOCH",
+                    "DcaISellValue":"80",
+
+                    // Trailing Stop
+
+                    "TrailingStopLossStrategy":"ATRPERCENTAGE",
+                    "TrailingStopLossTrigger":"0.5 * V",
+                    "DcaTrailingStopLossStrategy":"ATRPERCENTAGE",
+                    "DcaTrailingStopLossTrigger":"0.5 * V",
+
+                    "TrailingStopLossTriggerArm":"1.25",
+                    "DcaTrailingStopLossTriggerArm":"1.25",
                    
   
                     "Weight": "97"
@@ -961,7 +1308,170 @@
   
                     "SellWallOrderbookDepth": "50",
                     "SellWallDiffPercentage": "5000",
+                   
 
+
+                    // Dca Buy Settings
+
+                    "DcaTrailingBuy":"0",
+
+                    "DcaBuyStrategyFormula": "(A || B) && (C && D && F && G)",
+
+                    "DcaABuyStrategyLabel":"MACD1HOUR",
+                    "DcaABuyStrategy":"MACD",
+                    "DcaABuyValue":"0.0000002",
+
+                    "DcaBBuyStrategyLabel":"MACD1HOURLONG",
+                    "DcaBBuyStrategy":"MACD",
+                    "DcaBBuyValue":"0.00000002",
+
+                    "DcaCBuyStrategyLabel":"HMAENTRY1HOURSHORT",
+                    "DcaCBuyStrategy": "HMAGAIN",
+                    "DcaCBuyValue":"0.1",
+
+                    "DcaFBuyStrategyLabel":"HMAENTRY1HOURLONG",
+                    "DcaFBuyStrategy": "HMAGAIN",
+                    "DcaFBuyValue":"0.1",
+
+                    //"DcaCBuyStrategyLabel":"HMAENTRY4HOUR",
+                    //"DcaCBuyStrategy": "HMASPREAD",
+                    //"DcaCBuyValue":"0.15",
+
+                    "DcaDBuyStrategyLabel":"STOCH1HOUR",
+                    "DcaDBuyStrategy": "STOCH",
+                    "DcaDBuyValue":"49",
+                    "DcaDBuyStrategyDirection":"UP",
+
+                    "DcaEBuyStrategyLabel":"OBV1HOUR",
+                    "DcaEBuyStrategy": "OBV",
+                    "DcaEBuyValue":"0.015",
+
+                    "DcaGBuyStrategy": "PROFITPERCENTAGE",
+
+                    "DcaGBuyValue": "-2",
+                    "DcaGBuyValue1": "-3",
+                    "DcaGBuyValue2": "-3",
+                    "DcaGBuyValue3": "-4",
+                    "DcaGBuyValue4": "-5",
+                    "DcaGBuyValue5": "-7",
+                    "DcaGBuyValue6": "-8",
+                    "DcaGBuyValue7": "-3",
+                    "DcaGBuyValue8": "-6",
+                    "DcaGBuyValue9": "-9",
+                    "DcaGBuyValue10": "-12",
+        
+                    "DcaBuyPercentage": "100",
+                    "DcaBuyPercentage1": "100",
+                    "DcaBuyPercentage2": "100",
+                    "DcaBuyPercentage3": "100",
+                    "DcaBuyPercentage4": "100",
+                    "DcaBuyPercentage5": "100",
+                    "DcaBuyPercentage6": "100",
+                    "DcaBuyPercentage7": "14.2857142857143",
+                    "DcaBuyPercentage8": "12.5",
+                    "DcaBuyPercentage9": "11.1111111111111",
+                    "DcaBuyPercentage10": "10",
+                    "DcaBuyPercentage11": "9.09090909090909",
+
+                    // Exit Settings
+
+                    "TrailingProfit":"0.03",               
+                    "TrailingProfitType":"DEFAULT",
+
+                    "SellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+
+                    "ASellStrategy":"GAIN",
+                    "ASellValue": "1.25",
+
+                    "BSellStrategyLabel":"BB",
+                    "BSellStrategy": "HIGHBB",
+                    "BSellValue":"-5",
+                    "BSellValueLimit":"-150",
+
+                    "CSellStrategyLabel":"PDHIGH",
+                    "CSellStrategy":"PDHIGH",
+                    "CSellValue":"-0.00000001",
+                    "CSellValueLimit":"-30",
+
+                    "DSellStrategyLabel":"STOCHEXIT",
+                    "DSellStrategy": "STOCH",
+                    "DSellValue":"65",
+                    "DSellValueLimit":"79.9",
+
+                    "ESellStrategyLabel":"STOCHBULLISH",
+                    "ESellStrategy": "STOCH",
+                    "ESellValue":"80",
+
+                    "FSellStrategyLabel":"STOCHBULLISH15",
+                    "FSellStrategy": "STOCH",
+                    "FSellValue":"80",
+
+                    "GSellStrategyLabel":"STOCHBULLISH1",
+                    "GSellStrategy": "STOCH",
+                    "GSellValue":"80",
+
+                    "HSellStrategyLabel":"STOCHBULLISH4",
+                    "HSellStrategy": "STOCH",
+                    "HSellValue":"80",
+
+                    "ISellStrategyLabel":"STOCHBULLISH1D",
+                    "ISellStrategy": "STOCH",
+                    "ISellValue":"80",
+
+                    // Dca Exit Settings
+
+                    "DcaTrailingProfit":"0.03",               
+                    "DcaTrailingProfitType":"DEFAULT",
+
+                    "DcaSellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+
+                    "DcaASellStrategy":"GAIN",
+                    "DcaASellValue": "1.25",
+
+                    "DcaBSellStrategyLabel":"BB",
+                    "DcaBSellStrategy": "HIGHBB",
+                    "DcaBSellValue":"-5",
+                    "DcaBSellValueLimit":"-150",
+
+                    "DcaCSellStrategyLabel":"PDHIGH",
+                    "DcaCSellStrategy":"PDHIGH",
+                    "DcaCSellValue":"-0.00000001",
+                    "DcaCSellValueLimit":"-30",
+
+                    "DcaDSellStrategyLabel":"STOCHEXIT",
+                    "DcaDSellStrategy": "STOCH",
+                    "DcaDSellValue":"65",
+                    "DcaDSellValueLimit":"79.9",
+
+                    "DcaESellStrategyLabel":"STOCHBULLISH",
+                    "DcaESellStrategy": "STOCH",
+                    "DcaESellValue":"80",
+
+                    "DcaFSellStrategyLabel":"STOCHBULLISH15",
+                    "DcaFSellStrategy": "STOCH",
+                    "DcaFSellValue":"80",
+
+                    "DcaGSellStrategyLabel":"STOCHBULLISH1",
+                    "DcaGSellStrategy": "STOCH",
+                    "DcaGSellValue":"80",
+
+                    "DcaHSellStrategyLabel":"STOCHBULLISH4",
+                    "DcaHSellStrategy": "STOCH",
+                    "DcaHSellValue":"80",
+
+                    "DcaISellStrategyLabel":"STOCHBULLISH1D",
+                    "DcaISellStrategy": "STOCH",
+                    "DcaISellValue":"80",
+
+                    // Trailing Stop
+
+                    "TrailingStopLossStrategy":"ATRPERCENTAGE",
+                    "TrailingStopLossTrigger":"0.6 * V",
+                    "DcaTrailingStopLossStrategy":"ATRPERCENTAGE",
+                    "DcaTrailingStopLossTrigger":"0.6 * V",
+
+                    "TrailingStopLossTriggerArm":"1.25",
+                    "DcaTrailingStopLossTriggerArm":"1.25",
                    
                       "Weight": "98"
               }
@@ -972,7 +1482,170 @@
                     "Override": {
                     "SellWallOrderbookDepth": "50",
                     "SellWallDiffPercentage": "5000",
+                    
 
+
+                    // Dca Buy Settings
+
+                    "DcaTrailingBuy":"0",
+
+                    "DcaBuyStrategyFormula": "(A || B) && (C && D && F && G)",
+
+                    "DcaABuyStrategyLabel":"MACD1HOUR",
+                    "DcaABuyStrategy":"MACD",
+                    "DcaABuyValue":"0.0000002",
+
+                    "DcaBBuyStrategyLabel":"MACD1HOURLONG",
+                    "DcaBBuyStrategy":"MACD",
+                    "DcaBBuyValue":"0.00000002",
+
+                    "DcaCBuyStrategyLabel":"HMAENTRY1HOURSHORT",
+                    "DcaCBuyStrategy": "HMAGAIN",
+                    "DcaCBuyValue":"0.1",
+
+                    "DcaFBuyStrategyLabel":"HMAENTRY1HOURLONG",
+                    "DcaFBuyStrategy": "HMAGAIN",
+                    "DcaFBuyValue":"0.1",
+
+                    //"DcaCBuyStrategyLabel":"HMAENTRY4HOUR",
+                    //"DcaCBuyStrategy": "HMASPREAD",
+                    //"DcaCBuyValue":"0.15",
+
+                    "DcaDBuyStrategyLabel":"STOCH1HOUR",
+                    "DcaDBuyStrategy": "STOCH",
+                    "DcaDBuyValue":"49",
+                    "DcaDBuyStrategyDirection":"UP",
+
+                    "DcaEBuyStrategyLabel":"OBV1HOUR",
+                    "DcaEBuyStrategy": "OBV",
+                    "DcaEBuyValue":"0.015",
+
+                    "DcaGBuyStrategy": "PROFITPERCENTAGE",
+
+                    "DcaGBuyValue": "-2",
+                    "DcaGBuyValue1": "-3",
+                    "DcaGBuyValue2": "-3",
+                    "DcaGBuyValue3": "-4",
+                    "DcaGBuyValue4": "-5",
+                    "DcaGBuyValue5": "-7",
+                    "DcaGBuyValue6": "-8",
+                    "DcaGBuyValue7": "-3",
+                    "DcaGBuyValue8": "-6",
+                    "DcaGBuyValue9": "-9",
+                    "DcaGBuyValue10": "-12",
+        
+                    "DcaBuyPercentage": "100",
+                    "DcaBuyPercentage1": "100",
+                    "DcaBuyPercentage2": "100",
+                    "DcaBuyPercentage3": "100",
+                    "DcaBuyPercentage4": "100",
+                    "DcaBuyPercentage5": "100",
+                    "DcaBuyPercentage6": "100",
+                    "DcaBuyPercentage7": "14.2857142857143",
+                    "DcaBuyPercentage8": "12.5",
+                    "DcaBuyPercentage9": "11.1111111111111",
+                    "DcaBuyPercentage10": "10",
+                    "DcaBuyPercentage11": "9.09090909090909",
+
+                    // Exit Settings
+
+                    "TrailingProfit":"0.03",               
+                    "TrailingProfitType":"DEFAULT",
+
+                    "SellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+
+                    "ASellStrategy":"GAIN",
+                    "ASellValue": "1.4",
+
+                    "BSellStrategyLabel":"BB",
+                    "BSellStrategy": "HIGHBB",
+                    "BSellValue":"-5",
+                    "BSellValueLimit":"-150",
+
+                    "CSellStrategyLabel":"PDHIGH",
+                    "CSellStrategy":"PDHIGH",
+                    "CSellValue":"-0.00000001",
+                    "CSellValueLimit":"-30",
+
+                    "DSellStrategyLabel":"STOCHEXIT",
+                    "DSellStrategy": "STOCH",
+                    "DSellValue":"65",
+                    "DSellValueLimit":"79.9",
+
+                    "ESellStrategyLabel":"STOCHBULLISH",
+                    "ESellStrategy": "STOCH",
+                    "ESellValue":"80",
+
+                    "FSellStrategyLabel":"STOCHBULLISH15",
+                    "FSellStrategy": "STOCH",
+                    "FSellValue":"80",
+
+                    "GSellStrategyLabel":"STOCHBULLISH1",
+                    "GSellStrategy": "STOCH",
+                    "GSellValue":"80",
+
+                    "HSellStrategyLabel":"STOCHBULLISH4",
+                    "HSellStrategy": "STOCH",
+                    "HSellValue":"80",
+
+                    "ISellStrategyLabel":"STOCHBULLISH1D",
+                    "ISellStrategy": "STOCH",
+                    "ISellValue":"80",
+
+                    // Dca Exit Settings
+
+                    "DcaTrailingProfit":"0.03",               
+                    "DcaTrailingProfitType":"DEFAULT",
+
+                    "DcaSellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+
+                    "DcaASellStrategy":"GAIN",
+                    "DcaASellValue": "1.4",
+
+                    "DcaBSellStrategyLabel":"BB",
+                    "DcaBSellStrategy": "HIGHBB",
+                    "DcaBSellValue":"-5",
+                    "DcaBSellValueLimit":"-150",
+
+                    "DcaCSellStrategyLabel":"PDHIGH",
+                    "DcaCSellStrategy":"PDHIGH",
+                    "DcaCSellValue":"-0.00000001",
+                    "DcaCSellValueLimit":"-30",
+
+                    "DcaDSellStrategyLabel":"STOCHEXIT",
+                    "DcaDSellStrategy": "STOCH",
+                    "DcaDSellValue":"65",
+                    "DcaDSellValueLimit":"79.9",
+
+                    "DcaESellStrategyLabel":"STOCHBULLISH",
+                    "DcaESellStrategy": "STOCH",
+                    "DcaESellValue":"80",
+
+                    "DcaFSellStrategyLabel":"STOCHBULLISH15",
+                    "DcaFSellStrategy": "STOCH",
+                    "DcaFSellValue":"80",
+
+                    "DcaGSellStrategyLabel":"STOCHBULLISH1",
+                    "DcaGSellStrategy": "STOCH",
+                    "DcaGSellValue":"80",
+
+                    "DcaHSellStrategyLabel":"STOCHBULLISH4",
+                    "DcaHSellStrategy": "STOCH",
+                    "DcaHSellValue":"80",
+
+                    "DcaISellStrategyLabel":"STOCHBULLISH1D",
+                    "DcaISellStrategy": "STOCH",
+                    "DcaISellValue":"80",
+
+                    // Trailing Stop
+
+                    "TrailingStopLossStrategy":"ATRPERCENTAGE",
+                    "TrailingStopLossTrigger":"0.6 * V",
+                    "DcaTrailingStopLossStrategy":"ATRPERCENTAGE",
+                    "DcaTrailingStopLossTrigger":"0.6 * V",
+
+                    "TrailingStopLossTriggerArm":"1.5",
+                    "DcaTrailingStopLossTriggerArm":"1.5",
                    
           
                     "weight":"99"
@@ -985,7 +1658,168 @@
                     "SellWallOrderbookDepth": "50",
                     "SellWallDiffPercentage": "5000",
 
-                   
+  
+                // Dca Buy Settings
+    
+                "DcaTrailingBuy":"0",
+    
+                "DcaBuyStrategyFormula": "(A || B) && (C && D && F && G)",
+    
+                "DcaABuyStrategyLabel":"MACD1HOUR",
+                "DcaABuyStrategy":"MACD",
+                "DcaABuyValue":"0.0000002",
+    
+                "DcaBBuyStrategyLabel":"MACD1HOURLONG",
+                "DcaBBuyStrategy":"MACD",
+                "DcaBBuyValue":"0.00000002",
+    
+                "DcaCBuyStrategyLabel":"HMAENTRY1HOURSHORT",
+                "DcaCBuyStrategy": "HMAGAIN",
+                "DcaCBuyValue":"0.1",
+  
+                "DcaFBuyStrategyLabel":"HMAENTRY1HOURLONG",
+                "DcaFBuyStrategy": "HMAGAIN",
+                "DcaFBuyValue":"0.1",
+  
+                //"DcaCBuyStrategyLabel":"HMAENTRY4HOUR",
+                //"DcaCBuyStrategy": "HMASPREAD",
+                //"DcaCBuyValue":"0.15",
+    
+                "DcaDBuyStrategyLabel":"STOCH1HOUR",
+                "DcaDBuyStrategy": "STOCH",
+                "DcaDBuyValue":"49",
+                "DcaDBuyStrategyDirection":"UP",
+    
+                "DcaEBuyStrategyLabel":"OBV1HOUR",
+                "DcaEBuyStrategy": "OBV",
+                "DcaEBuyValue":"0.015",
+    
+                "DcaGBuyStrategy": "PROFITPERCENTAGE",
+
+                "DcaGBuyValue": "-2",
+                "DcaGBuyValue1": "-3",
+                "DcaGBuyValue2": "-3",
+                "DcaGBuyValue3": "-4",
+                "DcaGBuyValue4": "-5",
+                "DcaGBuyValue5": "-7",
+                "DcaGBuyValue6": "-8",
+                "DcaGBuyValue7": "-3",
+                "DcaGBuyValue8": "-6",
+                "DcaGBuyValue9": "-9",
+                "DcaGBuyValue10": "-12",
+    
+                "DcaBuyPercentage": "100",
+                "DcaBuyPercentage1": "100",
+                "DcaBuyPercentage2": "100",
+                "DcaBuyPercentage3": "100",
+                "DcaBuyPercentage4": "100",
+                "DcaBuyPercentage5": "100",
+                "DcaBuyPercentage6": "100",
+                "DcaBuyPercentage7": "14.2857142857143",
+                "DcaBuyPercentage8": "12.5",
+                "DcaBuyPercentage9": "11.1111111111111",
+                "DcaBuyPercentage10": "10",
+                "DcaBuyPercentage11": "9.09090909090909",
+                
+                // Exit Settings
+  
+                "TrailingProfit":"0.03",               
+                "TrailingProfitType":"DEFAULT",
+  
+                "SellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+    
+                "ASellStrategy":"GAIN",
+                "ASellValue": "1.8",
+    
+                "BSellStrategyLabel":"BB",
+                "BSellStrategy": "HIGHBB",
+                "BSellValue":"-5",
+                "BSellValueLimit":"-150",
+    
+                "CSellStrategyLabel":"PDHIGH",
+                "CSellStrategy":"PDHIGH",
+                "CSellValue":"-0.00000001",
+                "CSellValueLimit":"-30",
+    
+                "DSellStrategyLabel":"STOCHEXIT",
+                "DSellStrategy": "STOCH",
+                "DSellValue":"65",
+                "DSellValueLimit":"79.9",
+  
+                "ESellStrategyLabel":"STOCHBULLISH",
+                "ESellStrategy": "STOCH",
+                "ESellValue":"80",
+
+                "FSellStrategyLabel":"STOCHBULLISH15",
+                "FSellStrategy": "STOCH",
+                "FSellValue":"80",
+
+                "GSellStrategyLabel":"STOCHBULLISH1",
+                "GSellStrategy": "STOCH",
+                "GSellValue":"80",
+
+                "HSellStrategyLabel":"STOCHBULLISH4",
+                "HSellStrategy": "STOCH",
+                "HSellValue":"80",
+
+                "ISellStrategyLabel":"STOCHBULLISH1D",
+                "ISellStrategy": "STOCH",
+                "ISellValue":"80",
+                
+                // Dca Exit Settings
+  
+                "DcaTrailingProfit":"0.03",               
+                "DcaTrailingProfitType":"DEFAULT",
+  
+                "DcaSellStrategyFormula": "(A && B && C && D && !E && !F && !G && !H && !I)",
+    
+                "DcaASellStrategy":"GAIN",
+                "DcaASellValue": "1.8",
+    
+                "DcaBSellStrategyLabel":"BB",
+                "DcaBSellStrategy": "HIGHBB",
+                "DcaBSellValue":"-5",
+                "DcaBSellValueLimit":"-150",
+    
+                "DcaCSellStrategyLabel":"PDHIGH",
+                "DcaCSellStrategy":"PDHIGH",
+                "DcaCSellValue":"-0.00000001",
+                "DcaCSellValueLimit":"-30",
+    
+                "DcaDSellStrategyLabel":"STOCHEXIT",
+                "DcaDSellStrategy": "STOCH",
+                "DcaDSellValue":"65",
+                "DcaDSellValueLimit":"79.9",
+  
+                "DcaESellStrategyLabel":"STOCHBULLISH",
+                "DcaESellStrategy": "STOCH",
+                "DcaESellValue":"80",
+
+                "DcaFSellStrategyLabel":"STOCHBULLISH15",
+                "DcaFSellStrategy": "STOCH",
+                "DcaFSellValue":"80",
+
+                "DcaGSellStrategyLabel":"STOCHBULLISH1",
+                "DcaGSellStrategy": "STOCH",
+                "DcaGSellValue":"80",
+
+                "DcaHSellStrategyLabel":"STOCHBULLISH4",
+                "DcaHSellStrategy": "STOCH",
+                "DcaHSellValue":"80",
+
+                "DcaISellStrategyLabel":"STOCHBULLISH1D",
+                "DcaISellStrategy": "STOCH",
+                "DcaISellValue":"80",
+  
+                // Trailing Stop
+  
+                "TrailingStopLossStrategy":"ATRPERCENTAGE",
+                "TrailingStopLossTrigger":"0.7 * V",
+                "DcaTrailingStopLossStrategy":"ATRPERCENTAGE",
+                "DcaTrailingStopLossTrigger":"0.7 * V",
+               
+                "TrailingStopLossTriggerArm":"1.8",
+                "DcaTrailingStopLossTriggerArm":"1.8",
                   
                     "Weight": "100"
               }
@@ -1020,7 +1854,7 @@
                   },
   
               "FourhourStrategyGrouping":{
-                  "Condition":"[pair.ShortEma] > [pair.LongEma]", 
+                  "Condition":"[positions.DcaCoinCount] <= 4 && [pair.ShortEma] > [pair.LongEma]", 
                   "Configs":[{
                           "Override":{
                               "InsertSnippets": "FourHour,FourHourDca",
@@ -1031,7 +1865,7 @@
                       },
 
                 "DailyStrategyGrouping":{
-                "Condition":"[pair.ShortSma] < [pair.LongSma] && [pair.ShortEma] > [pair.LongEma]", 
+                "Condition":"[positions.DcaCoinCount] <= 4 && [pair.ShortSma] < [pair.LongSma]", 
                 "Configs":[{
                         "Override":{
                             "InsertSnippets": "DailyHour,DailyHourDca",
@@ -1039,29 +1873,20 @@
                             }
                             }
                         ]
-                    }
+                    },
+
+                    "GoPossDcaStrategyGrouping":{
+                        "Condition":"[pair.Profit] >= 2", 
+                        "Configs":[{
+                                    "Override":{
+                                    "InsertSnippets": "PossDca",
+                                        "Weight":"995" 
+                                    }
+                                    }
+                                    ]
+                        }
 
   
- /*             "GoSuperBullGainStrategyGrouping":{
-                  "Condition":"[pair.LastPrice] > [pair.LongEma(4)] && [pair.ShortEma(4)] > [pair.LongEma(4)] ", //[pair.LastPrice] && [pair.VwmaPercentageChange] > 2   && [pair.Vwap(2)] >= 0.1 && [pair.Atrp(2)] >= 0.1
-                  "Configs":[{
-                          "Override":{
-                              "InsertSnippets": "SuperBullGain",
-                              "Weight":"995" 
-                              }
-                              }
-                          ]
-                      },
-  
-              "GoBullGainStrategyGrouping":{
-                  "Condition":"[pair.LastPrice] > [pair.LongEma(3)] && [pair.ShortEma(3)] > [pair.LongEma(3)]", //[pair.LastPrice] && [pair.VwmaPercentageChange] > 2   && [pair.Vwap(2)] >= 0.1 && [pair.Atrp(2)] >= 0.1
-                  "Configs":[{
-                          "Override":{
-                              "InsertSnippets": "BullGain",
-                              "Weight":"994" 
-                              }
-                              }
-                          ]
-                      }*/
+
              
   }
